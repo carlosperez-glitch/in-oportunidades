@@ -20,7 +20,7 @@ export const colors = {
   placeholder: "#9ca3af",
 
   // Bordes y fondos
-  border:      "#f3f4f6",
+  border:      "#dbdbdb",
   borderMid:   "#e5e7eb",
   borderStrong:"#d1d5db",
   bgPage:      "#ffffff",
