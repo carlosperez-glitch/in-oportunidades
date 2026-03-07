@@ -9,7 +9,20 @@ export default function App() {
   var [filtros, setFiltros] = useState({ buscar: "", estados: [], tipos: [], estrategias: [], orden: ORDEN_OPTIONS[0] });
   var [showFiltroMobile, setShowFiltroMobile] = useState(false);
   var [selected, setSelected] = useState(null);
+  var [showSidebar, setShowSidebar] = useState(true); // sidebar filtros desktop: toggle con el embudo
   var [isDesktop, setIsDesktop] = useState(typeof window !== "undefined" && window.innerWidth >= 768);
+
+  // Sidebar y detalle son mutuamente excluyentes en desktop
+  function seleccionar(op) {
+    setSelected(op);
+    if (op) setShowSidebar(false); // abrir detalle cierra sidebar
+  }
+  function toggleSidebar() {
+    setShowSidebar(function(v) {
+      if (!v) setSelected(null); // abrir sidebar cierra detalle
+      return !v;
+    });
+  }
 
   useEffect(function() {
     function h() { setIsDesktop(window.innerWidth >= 768); }
@@ -68,8 +81,8 @@ export default function App() {
       {/* BODY: 3 columnas en desktop */}
       <div style={{ display: "flex", height: "calc(100vh - 55px)" }}>
 
-        {/* Col 1: Sidebar filtros (desktop) */}
-        {isDesktop && (
+        {/* Col 1: Sidebar filtros (desktop) — se muestra/oculta con el embudo */}
+        {isDesktop && showSidebar && (
           <div style={{ width: 200, borderRight: "1px solid " + colors.border, overflowY: "auto", flexShrink: 0 }}>
             <SidebarFiltros filtros={filtros} setFiltros={setFiltros} isMobile={false} />
           </div>
@@ -79,20 +92,22 @@ export default function App() {
         <Lista
           filtradas={filtradas}
           selected={selected}
-          setSelected={setSelected}
+          setSelected={seleccionar}
           isDesktop={isDesktop}
           totalFiltros={totalFiltros}
+          showSidebar={showSidebar}
+          onToggleSidebar={toggleSidebar}
           onAbrirFiltroMobile={function() { setShowFiltroMobile(true); }}
         />
 
         {/* Col 3: Panel detalle (desktop) */}
-        {isDesktop && (
+        {isDesktop && selected && (
           <div style={{ width: 480, borderLeft: "1px solid " + colors.border, flexShrink: 0, display: "flex", flexDirection: "column" }}>
-            {selected
-              ? <PanelDetalle detalle={DETALLE} onClose={function() { setSelected(null); }} inline={true} />
-              : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", color: colors.borderStrong, fontSize: 13 }}>Selecciona una oportunidad</div>
-            }
+            <PanelDetalle detalle={DETALLE} onClose={function() { setSelected(null); }} inline={true} />
           </div>
+        )}
+        {isDesktop && !selected && !showSidebar && (
+          <div style={{ flex: 1, display: "flex", alignItems: "center", justifyContent: "center", color: colors.borderStrong, fontSize: 13 }}>Selecciona una oportunidad</div>
         )}
       </div>
 
