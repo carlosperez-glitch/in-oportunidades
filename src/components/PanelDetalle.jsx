@@ -102,7 +102,7 @@ function SubvistaObservaciones({ observaciones: initialObs, onBack }) {
         {obs.map(function(o, i) {
           return (
             <div key={i} style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: o.esGestor ? colors.accion : "#111", marginBottom: 4 }}>{o.autor}</div>
+              <div style={{ fontSize: 14, fontWeight: 600, color: "#111", marginBottom: 4 }}>{o.autor}</div>
               <div style={{ fontSize: 15, color: "#374151", lineHeight: 1.5 }}>{o.texto}</div>
               <div style={{ fontSize: 13, color: "#9ca3af", marginTop: 2 }}>{o.fecha}</div>
             </div>
