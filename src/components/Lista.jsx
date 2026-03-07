@@ -71,13 +71,13 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
             }}
           >
             <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 600, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+              <div style={{ fontSize: 13, fontWeight: 400, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {op.titulo}
               </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
               <span style={{ width: 46, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.estrategia}</span>
-              <span style={{ width: 50, textAlign: "right", fontSize: 12, fontWeight: 700, color: "#111" }}>{op.roi} %</span>
+              <span style={{ width: 50, textAlign: "right", fontSize: 12, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
               <span style={{ width: 36, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.meses}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.tipo}</span>
               {isDesktop && (
