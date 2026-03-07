@@ -278,7 +278,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
     <div style={{ fontFamily: "'DM Sans', sans-serif", display: "flex", flexDirection: "column", height: "100%", overflow: "hidden" }}>
 
       {/* Header sticky con dropdown de secciones */}
-      <div style={{ position: "sticky", top: 0, background: "#fff", zIndex: 10, borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
+      <div style={{ position: "sticky", top: 0, background: "#fff", zIndex: 10, borderBottom: "1px solid " + colors.border, flexShrink: 0 }}>
         <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", padding: "12px 20px" }}>
           <div style={{ position: "relative" }}>
             <button onClick={function() { setDdOpen(function(o) { return !o; }); }}
@@ -309,8 +309,9 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── RESUMEN ──────────────────────────────────────────────────────── */}
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px", marginBottom: 12 }}>
+            <div style={{ width: "fit-content" }}><Lbl>Operación</Lbl><div style={{ fontSize: 14, color: colors.secondary }}>{d.titulo}</div></div>
             <div style={{ width: "fit-content" }}><Lbl>Estado</Lbl><div style={{ fontSize: 14, color: "#374151" }}>{d.estado}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: "#374151" }}> {d.gestorRating}★</span></div>
+            <div style={{ width: "fit-content" }}><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: "#374151" }}> {d.gestorRating}</span></div>
             <div style={{ width: "fit-content" }}><Lbl>Estrategia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.estrategia}</div></div>
             <div style={{ width: "fit-content" }}><Lbl>Tipo</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.tipo}</div></div>
           </div>
@@ -350,7 +351,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["equipo"] = el; }}>
           <div style={{ marginBottom: 12 }}><Lbl>Gestor</Lbl><Txt text={d.sobreMi} /></div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px" }}>
             {[
               ["Arquitecto",      d.equipo.arquitecto],
               ["Project manager", d.equipo.projectManager],
@@ -463,7 +464,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </div>
           <div>
             <Lbl>Prevención de blanqueo de capitales</Lbl>
-            <div style={{ fontSize: 14, color: "#374151" }}>{d.pbc}</div>
+            <Txt text={d.pbc} />
           </div>
         </div>
 
@@ -528,8 +529,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           {pv.paso3 && (
             <div style={{ marginBottom: 16 }}>
               <Lbl>Paso 3 · Conclusiones</Lbl>
-              <div style={{ padding: "12px 14px", background: "#f9fafb", borderRadius: 8, fontSize: 15, color: "#374151", lineHeight: 1.6 }}>
-                {pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
+              <div style={{ padding: "12px 14px", fontSize: 14, color: colors.secondary, lineHeight: 1.6 }}>
+                <Lbl>Conclusión</Lbl>{pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
               </div>
             </div>
           )}
