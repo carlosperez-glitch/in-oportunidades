@@ -1,13 +1,13 @@
-// ─── Tokens de diseño ──────────────────────────────────────
+// ─── Tokens de diseño ─────────────────────────────────────────────────────────
 
 export const colors = {
   // Marca
   logo:        "#e53e3e",
-  accion:     "#7c3aed",
+  accion:      "#7c3aed",
   accionLight: "#f5f3ff",
 
   // Estados
-  CapI=$talizando: "#d97706",
+  capitalizando: "#d97706",
   enMarcha:      "#6b7280",
   finalizada:    "#9ca3af",
   tanteo:        "#d97706",
