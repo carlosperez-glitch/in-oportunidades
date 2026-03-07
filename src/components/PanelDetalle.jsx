@@ -613,10 +613,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["observaciones"] = el; }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <button onClick={function() { setSubvista("observaciones"); }} style={{ background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 14, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
-              Ver todas ({d.observaciones.length}) →
-            </button>
-          </div>
           {d.observaciones.slice(0, 2).map(function(o, i) {
             return (
               <div key={i} style={{ padding: "10px 0", borderBottom: "1px solid #f3f4f6" }}>
@@ -634,10 +630,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["resenas"] = el; }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <button onClick={function() { setSubvista("resenas"); }} style={{ background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 14, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
-              Ver todas ({d.resenas.length}) →
-            </button>
-          </div>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
             <Stars n={d.gestorRating} />
             <span style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>{d.gestorRating}</span>
