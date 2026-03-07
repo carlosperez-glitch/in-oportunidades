@@ -62,7 +62,7 @@ export default function App() {
               {NAV_ITEMS.map(function(item) {
                 var active = item === "Oportunidades";
                 return (
-                  <span key={item} style={{ fontSize: 13, color: active ? colors.primary : colors.muted, fontWeight: active ? 600 : 400, cursor: "pointer", borderBottom: active ? "2px solid " + colors.primary : "none", paddingBottom: 2 }}>
+                  <span key={item} style={{ fontSize: 15, color: active ? colors.primary : colors.muted, fontWeight: active ? 600 : 400, cursor: "pointer", borderBottom: active ? "2px solid " + colors.primary : "none", paddingBottom: 2 }}>
                     {item}
                   </span>
                 );
