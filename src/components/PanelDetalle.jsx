@@ -17,7 +17,7 @@ const SECCIONES = [
 
 // ─── Helpers de UI ────────────────────────────────────────────────────────────
 function Lbl({ children }) {
-  return <div style={{ fontSize: 12, color: "#525252", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3 }}>{children}</div>;
+  return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3 }}>{children}</div>;
 }
 function Divider() {
   return <div style={{ height: 1, background: "#f3f4f6", margin: "18px 0" }} />;
