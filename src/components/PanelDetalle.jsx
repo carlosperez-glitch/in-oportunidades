@@ -92,13 +92,13 @@ function SubvistaObservaciones({ observaciones: initialObs, onBack }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", overflow: "hidden", fontFamily: "'DM Sans', sans-serif" }}>
-      <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", padding: "20px 24px", borderBottom: "1px solid " + colors.border, flexShrink: 0 }}>
         <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 4 }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="#374151" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <span style={{ fontSize: 16, fontWeight: 600, color: "#111" }}>Observaciones y preguntas</span>
       </div>
-      <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
+      <div style={{ flex: 1, overflowY: "auto", padding: "16px 24px" }}>
         {obs.map(function(o, i) {
           return (
             <div key={i} style={{ marginBottom: 16 }}>
@@ -109,7 +109,7 @@ function SubvistaObservaciones({ observaciones: initialObs, onBack }) {
           );
         })}
       </div>
-      <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 8, flexShrink: 0, background: "#fff" }}>
+      <div style={{ padding: "12px 24px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 8, flexShrink: 0, background: "#fff" }}>
         <input value={input} onChange={function(e) { setInput(e.target.value); }} onKeyDown={function(e) { if (e.key === "Enter") enviar(); }}
           placeholder="Observación o pregunta"
           style={{ flex: 1, padding: "10px 14px", border: "1.5px solid #e5e7eb", borderRadius: 8, fontSize: 15, fontFamily: "inherit", outline: "none" }} />
@@ -138,13 +138,13 @@ function SubvistaResenas({ resenas: initialResenas, onBack }) {
 
   return (
     <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
-      <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", padding: "12px 24px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
         <button onClick={onBack} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 8 }}>
           <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="#374151" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
         </button>
         <span style={{ fontSize: 16, fontWeight: 600, color: "#111" }}>Reseñas de la operación</span>
       </div>
-      <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
+      <div style={{ flex: 1, overflowY: "auto", padding: "16px 24px" }}>
         <div style={{ display: "flex", alignItems: "center", gap: 16, marginBottom: 16, paddingBottom: 16, borderBottom: "1px solid #f3f4f6" }}>
           <div>
             <Lbl>Valoración media</Lbl>
@@ -171,7 +171,7 @@ function SubvistaResenas({ resenas: initialResenas, onBack }) {
           );
         })}
       </div>
-      <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6", flexShrink: 0, background: "#fff" }}>
+      <div style={{ padding: "12px 24px", borderTop: "1px solid #f3f4f6", flexShrink: 0, background: "#fff" }}>
         <div style={{ marginBottom: 8 }}><Stars n={inputRating} interactive onSet={setInputRating} /></div>
         <div style={{ display: "flex", gap: 8 }}>
           <input value={inputText} onChange={function(e) { setInputText(e.target.value); }} onKeyDown={function(e) { if (e.key === "Enter") valorar(); }}
@@ -304,7 +304,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
       </div>
 
       {/* Contenido scrollable */}
-      <div ref={scrollRef} style={{ flex: 1, overflowY: "auto", padding: "0 20px 80px" }}>
+      <div ref={scrollRef} style={{ flex: 1, overflowY: "auto", padding: "0 24px 80px" }}>
 
         {/* ── RESUMEN ──────────────────────────────────────────────────────── */}
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
@@ -687,7 +687,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
       </div>
 
       {/* Footer fijo */}
-      <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 10, flexShrink: 0, background: "#fff" }}>
+      <div style={{ padding: "12px 24px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 10, flexShrink: 0, background: "#fff" }}>
         <button style={{ flex: 1, padding: "10px", border: "1.5px solid #e5e7eb", borderRadius: 8, background: "#fff", fontSize: 15, fontFamily: "inherit", cursor: "pointer", color: "#374151", fontWeight: 500 }}>Ver presentación</button>
         <button style={{ flex: 1, padding: "10px", border: "none", borderRadius: 8, background: "#1C0963", fontSize: 15, fontFamily: "inherit", cursor: "pointer", color: "#fff", fontWeight: 600 }}>Solicitar invertir</button>
       </div>
