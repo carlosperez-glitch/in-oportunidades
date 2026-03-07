@@ -5,8 +5,8 @@ import { estadoColor, colors } from "../theme";
 // - selected: op | null
 // - setSelected: fn
 // - isDesktop: bool
-// - totalFiltros: number — para el badge del embudo (solo mobile)
-// - showSidebar: bool — estado del sidebar en desktop (embudo coloreado si abierto)
+// - totalFiltros: number — para el badge del embudo
+// - showSidebar: bool — estado del sidebar en desktop
 // - onToggleSidebar: fn — toggle sidebar en desktop
 // - onAbrirFiltroMobile: fn — solo en mobile
 
@@ -16,8 +16,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
     else { if (onAbrirFiltroMobile) onAbrirFiltroMobile(); }
   }
 
-  // Desktop: embudo coloreado cuando el sidebar está abierto
-  // Mobile: embudo coloreado cuando hay filtros activos
   var embudoActivo = isDesktop ? showSidebar : totalFiltros > 0;
 
   return (
@@ -34,7 +32,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
             <line x1="3" y1="7" x2="15" y2="7" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
             <line x1="6" y1="12" x2="12" y2="12" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
           </svg>
-          {/* Badge solo en mobile cuando hay filtros activos */}
           {!isDesktop && totalFiltros > 0 && (
             <span style={{ position: "absolute", top: -6, right: -8, background: colors.accion, color: "#fff", borderRadius: "50%", width: 16, height: 16, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
               {totalFiltros}
