@@ -320,7 +320,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── EQUIPO GESTOR ────────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["equipo"] = el; }}>
-          <div style={{ marginBottom: 14 }}><Txt text={d.sobreMi} /></div>
+          <div style={{ marginBottom: 14 }}><Lbl>Gestor</Lbl><Txt text={d.sobreMi} /></div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {[
               ["Arquitecto",      d.equipo.arquitecto],
