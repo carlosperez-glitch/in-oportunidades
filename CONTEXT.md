@@ -113,3 +113,8 @@ Hay tres niveles de texto, y la elección correcta es semántica:
 
 **Regla práctica**: si hay un valor debajo, es un `<Lbl>`. Si es el título de un bloque navegable, es `<SecTitle>` (y probablemente ya está en el dropdown, así que no hace falta repetirlo dentro del contenido).
 
+## Patrón: campos del formulario de gestor vs. vista del inversor
+
+Algunos campos que el gestor rellena en el formulario de alta no se muestran como etiquetas individuales en la vista del inversor — se presentan de forma legible y condensada (ej. "113 m² construidos", "Carga de Banco Santander: 45.000 €").
+
+Los nombres de campo y sus etiquetas de formulario están documentados como comentarios en `src/data/mock.js`, junto al objeto de datos al que pertenecen. Ese es el lugar canónico: no duplicar aquí.
