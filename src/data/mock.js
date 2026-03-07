@@ -90,6 +90,25 @@ export const DETALLE = {
     { autor: "Nick Fury",               rating: 5, texto: "FENOMENAL.", fecha: "Ago 24" },
   ],
   precioVenta: {
+    // FORMULARIO GESTOR — campos del paso 0 (ficha del inmueble)
+    // El inversor ve solo un resumen legible (superficies, tipo, cargas).
+    // El gestor rellena todos estos campos en el formulario de alta:
+    //   referencia        → "Referencia catastral"
+    //   localidad         → "Localidad"
+    //   municipio         → "Municipio"
+    //   cp                → "CP"
+    //   provincia         → "Provincia"
+    //   tipoInmueble      → "Tipo de inmueble"
+    //   superficieTerreno → "Sup. terreno (m²)"
+    //   superficieConstruida → "Sup. construida (m²)"
+    //   habitaciones      → "Habitaciones"
+    //   banos             → "Baños"
+    //   garajes           → "Garajes"
+    //   trasteros         → "Trasteros"
+    //   piscina           → "Piscina" (bool)
+    //   jardin            → "Jardín" (bool)
+    //   estadoConservacion→ "Estado de conservación"
+    //   cargas[]          → "Cargas" (acreedor, importe, tipo)
     paso0: {
       referencia: "3742801WH3474S0001KP",
       localidad: "Estepona",
