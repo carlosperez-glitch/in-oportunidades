@@ -55,7 +55,7 @@ function Stars({ n, interactive, onSet }) {
 function Campo({ label, valor }) {
   if (!valor && valor !== 0) return null;
   return (
-    <div style={{ marginBottom: 8 }}>
+    <div style={{ marginBottom: 12 }}>
       <Lbl>{label}</Lbl>
       <div style={{ fontSize: 15, color: "#374151" }}>{valor}</div>
     </div>
@@ -349,7 +349,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── EQUIPO GESTOR ────────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["equipo"] = el; }}>
-          <div style={{ marginBottom: 14 }}><Lbl>Gestor</Lbl><Txt text={d.sobreMi} /></div>
+          <div style={{ marginBottom: 12 }}><Lbl>Gestor</Lbl><Txt text={d.sobreMi} /></div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {[
               ["Arquitecto",      d.equipo.arquitecto],
@@ -367,29 +367,35 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["gestion"] = el; }}>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ marginBottom: 8 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 14, color: "#374151" }}>{d.estadoActual.valoracion}</div></div>
-            <div style={{ marginBottom: 8 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
-            <div style={{ marginBottom: 4 }}><Lbl>Características</Lbl></div><div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+            <div style={{ marginBottom: 12 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 14, color: "#374151" }}>{d.estadoActual.valoracion}</div></div>
+            <div style={{ marginBottom: 12 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
+            <div style={{ marginBottom: 12 }}><Lbl>Características</Lbl></div><div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
               {d.estadoActual.caracteristicas.map(function(c) {
                 return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 14, color: "#374151" }}>{c}</span>;
               })}
             </div>
-            <div style={{ marginBottom: 4 }}><Lbl>Ubicación</Lbl></div><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div>
+            <div style={{ marginBottom: 12 }}><Lbl>Ubicación</Lbl></div><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div>
           </div>
           <Divider />
           <div style={{ marginBottom: 14 }}>
-            <div style={{ marginBottom: 8 }}><Lbl>Problema</Lbl><Txt text={d.problema} /></div>
+            <div style={{ marginBottom: 12 }}><Lbl>Problema</Lbl><Txt text={d.problema} /></div>
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
           <div style={{ marginBottom: 14 }}>
             <Divider />
-          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+          <div>
+              {/* Cabecera única */}
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "0 10px 4px" }}>
+                <Lbl>Fase</Lbl>
+                <Lbl>Acciones</Lbl>
+                <Lbl>Duración</Lbl>
+              </div>
               {d.fases.map(function(f, i) {
                 return (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "8px 10px", background: "#f9fafb", borderRadius: 8 }}>
-                    <div><Lbl>Fase</Lbl><div style={{ fontSize: 14, fontWeight: 600, color: "#111" }}>{f.fase}</div></div>
-                    <div><Lbl>Acciones</Lbl><div style={{ fontSize: 14, color: "#374151", lineHeight: 1.5 }}>{f.acciones}</div></div>
-                    <div><Lbl>Duración</Lbl><div style={{ fontSize: 14, color: "#6b7280" }}>{f.duracion}</div></div>
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
+                    <div style={{ fontSize: 14, fontWeight: 600, color: "#111" }}>{f.fase}</div>
+                    <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.5 }}>{f.acciones}</div>
+                    <div style={{ fontSize: 14, color: "#6b7280" }}>{f.duracion}</div>
                   </div>
                 );
               })}
@@ -397,7 +403,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </div>
           <div style={{ marginBottom: 14 }}>
             <Divider />
-            <div style={{ marginBottom: 8 }}><Lbl>Situación actual</Lbl><Txt text={d.situacionActual} /></div>
+            <div style={{ marginBottom: 12 }}><Lbl>Situación actual</Lbl><Txt text={d.situacionActual} /></div>
             <div><Lbl>Próximos pasos</Lbl><Txt text={d.proximosPasos} /></div>
           </div>
           {d.estrategiaVenta ? (
@@ -450,7 +456,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             </div>
             <Txt text={d.escenarios.explicacion} />
           </div>
-          <div style={{ marginBottom: 8 }}>
+          <div style={{ marginBottom: 12 }}>
             <Lbl>Fiscalidad de la compraventa</Lbl>
             <Txt text={d.fiscalidadCompra} />
           </div>
@@ -580,7 +586,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 </div>
               )}
               {pv.paso4.interesados && pv.paso4.interesados.length > 0 && (
-                <div style={{ marginBottom: 8 }}>
+                <div style={{ marginBottom: 12 }}>
                   <Lbl>Interesados</Lbl>
                   {pv.paso4.interesados.map(function(p, i) {
                     return (
