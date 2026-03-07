@@ -19,10 +19,10 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
   var embudoActivo = isDesktop ? showSidebar : totalFiltros > 0;
 
   return (
-    <div style={{ flex: 1, overflowY: "auto", minWidth: 0 }}>
+    <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
       {/* Toolbar */}
-      <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", gap: 10 }}>
+      <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", gap: 10, flexShrink: 0 }}>
         <button
           onClick={handleEmbudo}
           style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
@@ -55,6 +55,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
       </div>
 
       {/* Filas */}
+      <div style={{ flex: 1, overflowY: "auto" }}>
       {filtradas.map(function(op) {
         var isSelected = selected && selected.id === op.id;
         return (
@@ -81,7 +82,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               <span style={{ width: 36, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.meses}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.tipo}</span>
               {isDesktop && (
-                <span style={{ width: 120, paddingLeft: 12, fontSize: 14, color: estadoColor[op.estado] || "#374151", fontWeight: 500 }}>
+                <span style={{ width: 120, paddingLeft: 12, fontSize: 14, color: estadoColor[op.estado] || "#374151", fontWeight: 500, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", display: "inline-block" }}>
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
                 </span>
               )}
@@ -100,6 +101,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           No hay oportunidades con los filtros seleccionados
         </div>
       )}
+      </div>
     </div>
   );
 }
