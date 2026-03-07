@@ -2,21 +2,21 @@
 // En producción esto vendrá de una API según op.id
 
 export const OPORTUNIDADES = [
-  { id: 1,  titulo: "3 viv Barcelona",             gestor: "Bruce Wayne",            estrategia: "V", roi: 49, meses: 18, tipo: "IB",   estado: "Capitalizando" },
+  { id: 1,  titulo: "3 viv Barcelona",             gestor: "Bruce Wayne",            estrategia: "V", roi: 49, meses: 18, tipo: "IB",   estado: "Capitalizando", porCapitalizar: 50 },
   { id: 2,  titulo: "Edificio en Cartagena",        gestor: "Peter Parker",           estrategia: "A", roi: 42, meses: 12, tipo: "IB",   estado: "En marcha" },
-  { id: 3,  titulo: "Cambio de uso en Madrid",      gestor: "Eddie Brok",             estrategia: "V", roi: 39, meses: 6,  tipo: "IB",   estado: "Capitalizando" },
+  { id: 3,  titulo: "Cambio de uso en Madrid",      gestor: "Eddie Brok",             estrategia: "V", roi: 39, meses: 6,  tipo: "IB",   estado: "Capitalizando", porCapitalizar: 32 },
   { id: 4,  titulo: "1 edificio en Mallorca",       gestor: "Nick Fury",              estrategia: "A", roi: 36, meses: 12, tipo: "JV W", estado: "Tanteo" },
   { id: 5,  titulo: "83 trasteros en Badajoz",      gestor: "Clark Kent",             estrategia: "V", roi: 31, meses: 16, tipo: "IB",   estado: "Finalizada" },
-  { id: 6,  titulo: "2 viviendas en Castellon",     gestor: "Diana Prince",           estrategia: "V", roi: 29, meses: 12, tipo: "IB",   estado: "Capitalizando" },
+  { id: 6,  titulo: "2 viviendas en Castellon",     gestor: "Diana Prince",           estrategia: "V", roi: 29, meses: 12, tipo: "IB",   estado: "Capitalizando", porCapitalizar: 28 },
   { id: 7,  titulo: "1 edificio okupado",           gestor: "Kara Kent",              estrategia: "V", roi: 25, meses: 17, tipo: "IB",   estado: "Tanteo" },
-  { id: 8,  titulo: "5 viviendas en Tarrag...",     gestor: "Donald Blake",           estrategia: "V", roi: 23, meses: 10, tipo: "JV",   estado: "Capitalizando" },
+  { id: 8,  titulo: "5 viviendas en Tarrag...",     gestor: "Donald Blake",           estrategia: "V", roi: 23, meses: 10, tipo: "JV",   estado: "Capitalizando", porCapitalizar: 44 },
   { id: 9,  titulo: "3 trasteros en La Man...",     gestor: "Felicia Hardy",          estrategia: "V", roi: 22, meses: 12, tipo: "IB+S", estado: "Tanteo" },
-  { id: 10, titulo: "Vivienda en Fuenjirola",       gestor: "Matt Murdock",           estrategia: "V", roi: 21, meses: 14, tipo: "IB",   estado: "Capitalizando" },
-  { id: 11, titulo: "3 viviendas Badajoz",          gestor: "Helen Parr",             estrategia: "V", roi: 20, meses: 6,  tipo: "IB",   estado: "Capitalizando" },
-  { id: 12, titulo: "Apartamento en Sagunto",       gestor: "Bob Parr",               estrategia: "V", roi: 19, meses: 6,  tipo: "IB",   estado: "Capitalizando" },
+  { id: 10, titulo: "Vivienda en Fuenjirola",       gestor: "Matt Murdock",           estrategia: "V", roi: 21, meses: 14, tipo: "IB",   estado: "Capitalizando", porCapitalizar: 21 },
+  { id: 11, titulo: "3 viviendas Badajoz",          gestor: "Helen Parr",             estrategia: "V", roi: 20, meses: 6,  tipo: "IB",   estado: "Capitalizando", porCapitalizar: 18 },
+  { id: 12, titulo: "Apartamento en Sagunto",       gestor: "Bob Parr",               estrategia: "V", roi: 19, meses: 6,  tipo: "IB",   estado: "Capitalizando", porCapitalizar: 15 },
   { id: 13, titulo: "Cambio de uso Extremadura",    gestor: "Diego de la Vega",       estrategia: "V", roi: 18, meses: 6,  tipo: "IB",   estado: "En marcha" },
-  { id: 14, titulo: "6 viviendas en Andalucia",     gestor: "Clint Barton",           estrategia: "V", roi: 49, meses: 6,  tipo: "IB",   estado: "Capitalizando" },
-  { id: 15, titulo: "3 viviendas en Sevilla",       gestor: "Marinette Dupain",       estrategia: "V", roi: 49, meses: 6,  tipo: "IB",   estado: "Capitalizando" },
+  { id: 14, titulo: "6 viviendas en Andalucia",     gestor: "Clint Barton",           estrategia: "V", roi: 49, meses: 6,  tipo: "IB",   estado: "Capitalizando", porCapitalizar: 63 },
+  { id: 15, titulo: "3 viviendas en Sevilla",       gestor: "Marinette Dupain",       estrategia: "V", roi: 49, meses: 6,  tipo: "IB",   estado: "Capitalizando", porCapitalizar: 37 },
   { id: 16, titulo: "21 viviendas en Alicante",     gestor: "Linda Danvers",          estrategia: "A", roi: 26, meses: 14, tipo: "IB+S", estado: "En marcha" },
 ];
 
