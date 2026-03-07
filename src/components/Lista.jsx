@@ -23,7 +23,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
       {/* Toolbar */}
       <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
-        <div style={{ width: 210, flexShrink: 0, display: "flex", alignItems: "center" }}>
+        <div style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center" }}>
         <button
           onClick={handleEmbudo}
           style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", marginRight: 10 }}
@@ -73,7 +73,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               transition: "background 0.1s",
             }}
           >
-            <div style={{ width: 210, flexShrink: 0 }}>
+            <div style={{ flex: 1, minWidth: 0 }}>
               <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap" }}>
                 {op.titulo}
               </div>
