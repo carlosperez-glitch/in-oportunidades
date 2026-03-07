@@ -497,8 +497,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 return (
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 15, fontWeight: 600, color: "#111" }}>{item.agencia}</span>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: "#374151" }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
+                      <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.agencia}</span>
+                      <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
                     </div>
                     <div style={{ fontSize: 14, color: "#6b7280" }}>{item.direccion} · {item.contacto} · {item.telefono}</div>
                   </div>
@@ -513,8 +513,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 return (
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 15, fontWeight: 600, color: "#111" }}>{item.titulo}</span>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: "#374151" }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
+                      <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.titulo}</span>
+                      <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
                     </div>
                     <div style={{ fontSize: 14, color: "#6b7280" }}>
                       {[item.tipo, item.m2 ? item.m2 + " m2" : "", item.dormBanos ? item.dormBanos + " dorm/baños" : "", item.estado, item.fechaAnuncio].filter(Boolean).join(" · ")}
