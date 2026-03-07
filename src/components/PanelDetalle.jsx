@@ -17,10 +17,10 @@ const SECCIONES = [
 
 // ─── Helpers de UI ────────────────────────────────────────────────────────────
 function Lbl({ children }) {
-  return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3, marginTop: 4 }}>{children}</div>;
+  return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3, marginTop: 8 }}>{children}</div>;
 }
 function Divider() {
-  return <div style={{ height: 1, background: "#dbdbdb", margin: "18px 0" }} />;
+  return <div style={{ height: 1, background: "#dbdbdb", margin: "22px 0 18px" }} />;
 }
 function SecTitle({ children }) {
   return <div style={{ fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>{children}</div>;
