@@ -530,7 +530,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div style={{ marginBottom: 16 }}>
               <Lbl>Paso 3 · Conclusiones</Lbl>
               <div style={{ padding: "12px 14px", fontSize: 14, color: colors.secondary, lineHeight: 1.6 }}>
-                <Lbl>Conclusión</Lbl>{pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
+                {pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
               </div>
             </div>
           )}
