@@ -102,7 +102,7 @@ export default function App() {
 
         {/* Col 3: Panel detalle — visible solo si hay selected */}
         {isDesktop && selected && (
-          <div style={{ width: "fit-content", minWidth: 420, maxWidth: 620, borderLeft: "1px solid " + colors.border, flexShrink: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
+          <div style={{ width: "fit-content", minWidth: 460, maxWidth: 660, borderLeft: "1px solid " + colors.border, flexShrink: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
             <PanelDetalle detalle={DETALLE} onClose={function() { setSelected(null); }} inline={true} />
           </div>
         )}
