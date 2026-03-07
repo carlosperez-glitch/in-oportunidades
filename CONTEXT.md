@@ -15,6 +15,7 @@ in-oportunidades/
   index.html
   package.json
   vite.config.js
+  CONTEXT.md         ← este archivo
   src/
     App.jsx          ← estado global, filtrado, layout
     index.jsx        ← punto de entrada
@@ -37,78 +38,47 @@ in-oportunidades/
 - Fondo fila seleccionada: `#f5f3ff`
 - Estilos: 100% inline (sin CSS externo, sin Tailwind)
 
-## Componentes
+## Entorno local del usuario
+- **Mac mini** con macOS 13.7
+- **Node**: v24.14.0 (instalado via nodejs.org .pkg)
+- **Proyecto clonado en**: ~/Desktop/in-oportunidades
+- **Arrancar**: cd ~/Desktop/in-oportunidades && npm run dev
+- **URL local**: http://localhost:5173 (o 5174 si el puerto está ocupado)
+- **Homebrew**: instalado pero NO usar para Node (macOS 13 compila desde fuente, tarda horas)
 
-### App.jsx
-- Importa datos de `./data/mock`
-- Importa componentes de `./components/`
-- Estado: `filtros`, `selected`, `isDesktop`, `showFiltroMobile`
-- `isDesktop = window.innerWidth >= 768` + listener resize
-- Layout desktop: 200px sidebar | flex lista | 480px panel detalle
+## Flujo de trabajo
+1. Claude edita archivos via GitHub API (necesita token)
+2. Usuario hace `git pull` en ~/Desktop/in-oportunidades
+3. Vite recarga automáticamente (HMR)
 
-### SidebarFiltros.jsx
-- Props: `filtros`, `setFiltros`, `isMobile`, `onClose`
-- Desktop: aplica filtros en tiempo real
-- Mobile: bottom sheet modal con Cancelar/Aplicar
-- Filtros: Estado, Tipo, Estrategia, búsqueda libre, ordenación
-- Tags activos con × para eliminar
-- Importa `ORDEN_OPTIONS` de `../data/mock`
+## Token GitHub
+- Nombre: "Plataforma inversión inmobiliaria Claude"
+- Regenerar en: https://github.com/settings/tokens
+- Permisos necesarios: solo `repo`
+- Asignarlo con: `window.__TOKEN__ = "ghp_..."` en consola del navegador
 
-### Lista.jsx
-- Props: `filtradas`, `selected`, `setSelected`, `isDesktop`, `totalFiltros`, `onAbrirFiltroMobile`
-- Toolbar: icono embudo con badge numérico, botón +
-- Columnas: Título | Estrat. | ROI% | Mes. | Tipo | Estado (color) | Gestor
-- Desktop muestra Estado y Gestor; mobile los oculta
-- Importa `estadoColor` de `../theme`
+## Bugs corregidos
+- ✅ theme.js corrupto (línea `CapI=$talizando`) — fix subido
+- ✅ Typo `DETARLE` en App.jsx — fix subido
 
-### PanelDetalle.jsx
-- Props: `detalle`, `onClose`, `inline`
-- `inline=true`: columna derecha desktop
-- `inline=false`: bottom sheet modal mobile
-- Header sticky con dropdown de 16 secciones
-- Subvistas: `"observaciones"` | `"resenas"` | `null`
-- Lightbox para fotos y documentos
-- Footer fijo: "Ver presentación" + "Solicitar invertir"
-- Importa `estadoColor`, `colors` de `../theme`
-
-## Datos mock (data/mock.js)
-- `OPORTUNIDADES`: array de 16 oportunidades con campos: id, titulo, gestor, estrategia, roi, meses, tipo, estado
-- `DETALLE`: objeto completo con todas las secciones del panel
-- `ORDEN_OPTIONS`: ["Rentabilidad para inversor", "Meses (menor a mayor)", "Meses (mayor a menor)", "Nombre A-Z"]
-- `NAV_ITEMS`: ["Novedades", "Mi perfil", "Oportunidades", "Servicios", "Productos", "Comunidad"]
-
-## Estado actual del desarrollo
-- ✅ Estructura refactorizada y limpia en GitHub
-- ✅ theme.js con tokens centralizados
-- ✅ data/mock.js con datos extraídos de App.jsx
-- ✅ Todos los componentes en src/components/
-- ✅ Archivos duplicados eliminados
-- ⏳ Verificar que compila correctamente (local o StackBlitz)
+## Estado actual (Mar 7, 2026)
+- ✅ Proyecto funcionando en local: http://localhost:5173
+- ✅ Estructura limpia en GitHub (sin duplicados)
+- ✅ Nav, filtros, lista y panel de detalle funcionando
+- ✅ Click en oportunidad muestra panel detalle
+- ⏳ Columnas de lista ligeramente estrechas (Estado/Gestor se truncan)
 
 ## Próximas tareas pendientes
-1. Verificar que el proyecto compila y se previsualiza correctamente
+1. Revisar layout de columnas en Lista (Estado/Gestor truncados)
 2. Pantalla de creación de oportunidad (formulario del gestor)
 3. Funcionalidad real de "Solicitar invertir" y "Ver presentación"
 4. Mapa real en sección Estado actual
 5. Upload real de fotos y documentos
 6. Resto de pestañas: Novedades, Mi perfil, Servicios, Productos, Comunidad
 
-## Cómo arrancar en local
-```bash
-git clone https://github.com/carlosperez-glitch/in-oportunidades
-cd in-oportunidades
-npm install
-npm run dev
-# Abre http://localhost:5173
-```
-
-## Cómo previsualizar en StackBlitz
-https://stackblitz.com/github/carlosperez-glitch/in-oportunidades
-
 ## Instrucciones para Claude en nueva conversación
-1. Leer este archivo CONTEXT.md del repo para entender el estado
-2. El token de GitHub puede haber expirado — pedir al usuario que regenere
-   el token "Plataforma inversión inmobiliaria Claude" en:
-   https://github.com/settings/tokens
-   y lo pegue en el chat o ejecute `window.__TOKEN__ = "ghp_..."` en la consola del navegador
-3. Para hacer cambios: editar archivos y hacer PUT vía GitHub API con el token
+1. Leer este archivo CONTEXT.md
+2. Pedir al usuario token GitHub si hace falta (regenerar en https://github.com/settings/tokens)
+3. Para ver la app: el usuario abre Terminal, cd ~/Desktop/in-oportunidades && npm run dev, abre http://localhost:5173
+4. Para hacer cambios: editar via GitHub API con PUT, luego usuario hace git pull en la segunda pestaña de Terminal
+5. La primera pestaña de Terminal siempre tiene Vite corriendo (no se puede escribir ahí)
