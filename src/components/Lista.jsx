@@ -22,10 +22,10 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
       {/* Toolbar */}
-      <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", gap: 10, flexShrink: 0 }}>
+      <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
         <button
           onClick={handleEmbudo}
-          style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
+          style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", marginRight: 10 }}
         >
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
             <line x1="0" y1="2" x2="18" y2="2" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
@@ -39,7 +39,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           )}
         </button>
 
-        <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 0 }}>+</button>
+        <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 0, marginRight: 10 }}>+</button>
 
         <div style={{ width: 210, flexShrink: 0 }} />
 
