@@ -644,7 +644,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               </div>
             );
           })}
-          <button onClick={function() { setSubvista("observaciones"); }} style={{ marginTop: 10, background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 15, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
+          <button onClick={function() { setSubvista("observaciones"); }} style={{ background: "none", border: "none", cursor: "pointer", color: "#1d4ed8", fontSize: 13, fontWeight: 400, fontFamily: "inherit", padding: 0, textDecoration: "underline" }}>
             Ver todas ({d.observaciones.length}) →
           </button>
         </div>
@@ -669,7 +669,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               </div>
             );
           })}
-          <button onClick={function() { setSubvista("resenas"); }} style={{ marginTop: 10, background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 15, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
+          <button onClick={function() { setSubvista("resenas"); }} style={{ background: "none", border: "none", cursor: "pointer", color: "#1d4ed8", fontSize: 13, fontWeight: 400, fontFamily: "inherit", padding: 0, textDecoration: "underline" }}>
             Ver todas ({d.resenas.length}) →
           </button>
         </div>
