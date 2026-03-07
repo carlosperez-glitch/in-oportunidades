@@ -80,7 +80,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               <span style={{ width: 50, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.tipo}</span>
               {isDesktop && (
                 <span style={{ width: 120, paddingLeft: 12, fontSize: 12, color: estadoColor[op.estado] || "#374151", fontWeight: 500 }}>
-                  {op.estado}
+                  {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
                 </span>
               )}
               {isDesktop && (
