@@ -31,7 +31,7 @@ function Txt({ text }) {
   return (
     <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.6 }}>
       {paras.map(function(p, i) {
-        return <p key={i} style={{ margin: 0, marginBottom: i < paras.length - 1 ? 6 : 0, whiteSpace: "pre-line" }}>{p}</p>;
+        return <p key={i} style={{ margin: 0, marginBottom: i < paras.length - 1 ? 2 : 0, whiteSpace: "pre-line" }}>{p}</p>;
       })}
     </div>
   );
