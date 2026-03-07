@@ -393,7 +393,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 return (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
                     <div>
-                      <div style={{ fontSize: 14, fontWeight: 600, color: "#111" }}>{f.fase}</div>
+                      <div style={{ fontSize: 14, fontWeight: 500, color: "#111" }}>{f.fase}</div>
                       <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>{f.duracion}</div>
                     </div>
                     <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.5 }}>{f.acciones}</div>
