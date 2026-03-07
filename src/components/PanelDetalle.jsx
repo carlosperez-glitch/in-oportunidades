@@ -446,8 +446,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
             <div style={{ marginTop: 6, fontSize: 14, color: "#374151", lineHeight: 1.8 }}>
               {[
-                pv.paso0.supTerreno ? pv.paso0.supTerreno + " m² de terreno" : null,
-                pv.paso0.supConstruida ? pv.paso0.supConstruida + " m² construidos" : null,
+                pv.paso0.superficieTerreno ? pv.paso0.superficieTerreno + " m² de terreno" : null,
+                pv.paso0.superficieConstruida ? pv.paso0.superficieConstruida + " m² construidos" : null,
                 pv.paso0.tipoInmueble || null,
                 [pv.paso0.localidad, pv.paso0.provincia].filter(Boolean).join(", ") || null,
               ].filter(Boolean).map(function(line, i) {
