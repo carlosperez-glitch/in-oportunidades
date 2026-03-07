@@ -89,7 +89,7 @@ export default function App() {
         {isDesktop && (
           <div style={{ width: 480, borderLeft: "1px solid " + colors.border, flexShrink: 0, display: "flex", flexDirection: "column" }}>
             {selected
-              ? <PanelDetalle detalle={DETARLE} onClose={function() { setSelected(null); }} inline={true} />
+              ? <PanelDetalle detalle={DETALLE} onClose={function() { setSelected(null); }} inline={true} />
               : <div style={{ display: "flex", alignItems: "center", justifyContent: "center", height: "100%", color: colors.borderStrong, fontSize: 13 }}>Selecciona una oportunidad</div>
             }
           </div>
