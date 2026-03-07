@@ -18,12 +18,26 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
   var embudoActivo = isDesktop ? showSidebar : totalFiltros > 0;
 
+
+  // Medir el texto más largo de los títulos visibles
+  const tituloMinWidth = useMemo(() => {
+    const canvas = document.createElement("canvas");
+    const ctx = canvas.getContext("2d");
+    ctx.font = "400 15px 'DM Sans', sans-serif";
+    let max = 120;
+    filtradas.forEach(op => {
+      const w = ctx.measureText(op.titulo).width;
+      if (w > max) max = w;
+    });
+    return Math.ceil(max) + 16; // +16 de padding visual
+  }, [filtradas]);
+
   return (
     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
 
       {/* Toolbar */}
       <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
-        <div style={{ flex: 1, minWidth: 0, display: "flex", alignItems: "center" }}>
+        <div style={{ flex: 1, minWidth: tituloMinWidth, display: "flex", alignItems: "center" }}>
         <button
           onClick={handleEmbudo}
           style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", marginRight: 10 }}
@@ -57,7 +71,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
       </div>
 
       {/* Filas */}
-      <div style={{ flex: 1, overflowY: "auto" }}>
+      <div style={{ flex: 1, overflowY: "auto", overflowX: "hidden" }}>
       {filtradas.map(function(op) {
         var isSelected = selected && selected.id === op.id;
         return (
@@ -73,7 +87,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               transition: "background 0.1s",
             }}
           >
-            <div style={{ flex: 1, minWidth: 0 }}>
+            <div style={{ flex: 1, minWidth: tituloMinWidth }}>
               <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap" }}>
                 {op.titulo}
               </div>
