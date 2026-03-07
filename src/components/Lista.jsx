@@ -41,7 +41,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
         <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 0, marginRight: 10 }}>+</button>
 
-        <div style={{ width: 210, flexShrink: 0 }} />
+        <div style={{ flex: 1, minWidth: 0 }} />
 
         {/* Cabeceras */}
         <div style={{ display: "flex", alignItems: "center", fontSize: 14, color: "#9ca3af" }}>
