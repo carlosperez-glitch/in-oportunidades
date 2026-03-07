@@ -375,7 +375,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             </div>
           </div>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Situación actual y próximos pasos</div>
             <Divider />
             <div style={{ marginBottom: 8 }}><Lbl>Situación actual</Lbl><Txt text={d.situacionActual} /></div>
             <div><Lbl>Próximos pasos</Lbl><Txt text={d.proximosPasos} /></div>
