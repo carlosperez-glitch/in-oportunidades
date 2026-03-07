@@ -41,10 +41,10 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
         <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 0 }}>+</button>
 
-        <div style={{ flex: 1 }} />
+        <div style={{ width: 210, flexShrink: 0 }} />
 
         {/* Cabeceras */}
-        <div style={{ display: "flex", alignItems: "center", fontSize: 12, color: "#9ca3af" }}>
+        <div style={{ display: "flex", alignItems: "center", fontSize: 14, color: "#9ca3af" }}>
           <span style={{ width: 46, textAlign: "right" }}>Estrat.</span>
           <span style={{ width: 50, textAlign: "right" }}>ROI</span>
           <span style={{ width: 36, textAlign: "right" }}>Mes.</span>
@@ -70,23 +70,23 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               transition: "background 0.1s",
             }}
           >
-            <div style={{ flex: 1, minWidth: 0 }}>
-              <div style={{ fontSize: 13, fontWeight: 400, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+            <div style={{ width: 210, flexShrink: 0 }}>
+              <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap" }}>
                 {op.titulo}
               </div>
             </div>
             <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
-              <span style={{ width: 46, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.estrategia}</span>
-              <span style={{ width: 50, textAlign: "right", fontSize: 12, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
-              <span style={{ width: 36, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.meses}</span>
-              <span style={{ width: 50, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.tipo}</span>
+              <span style={{ width: 46, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
+              <span style={{ width: 50, textAlign: "right", fontSize: 14, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
+              <span style={{ width: 36, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.meses}</span>
+              <span style={{ width: 50, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.tipo}</span>
               {isDesktop && (
-                <span style={{ width: 120, paddingLeft: 12, fontSize: 12, color: estadoColor[op.estado] || "#374151", fontWeight: 500 }}>
+                <span style={{ width: 120, paddingLeft: 12, fontSize: 14, color: estadoColor[op.estado] || "#374151", fontWeight: 500 }}>
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
                 </span>
               )}
               {isDesktop && (
-                <span style={{ width: 170, paddingLeft: 12, fontSize: 12, color: "#374151", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <span style={{ width: 170, paddingLeft: 12, fontSize: 14, color: "#374151", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {op.gestor}
                 </span>
               )}
