@@ -9,13 +9,13 @@ export default function App() {
   var [filtros, setFiltros] = useState({ buscar: "", estados: [], tipos: [], estrategias: [], orden: ORDEN_OPTIONS[0] });
   var [showFiltroMobile, setShowFiltroMobile] = useState(false);
   var [selected, setSelected] = useState(null);
-  var [showSidebar, setShowSidebar] = useState(true); // sidebar filtros desktop: toggle con el embudo
+  var [showSidebar, setShowSidebar] = useState(true);
   var [isDesktop, setIsDesktop] = useState(typeof window !== "undefined" && window.innerWidth >= 768);
 
-  // Sidebar y detalle son mutuamente excluyentes en desktop
+  // Sidebar filtros y panel detalle son mutuamente excluyentes en desktop
   function seleccionar(op) {
     setSelected(op);
-    if (op) setShowSidebar(false); // abrir detalle cierra sidebar
+    if (op) setShowSidebar(false); // seleccionar oportunidad cierra sidebar
   }
   function toggleSidebar() {
     setShowSidebar(function(v) {
@@ -78,10 +78,10 @@ export default function App() {
         </div>
       </div>
 
-      {/* BODY: 3 columnas en desktop */}
+      {/* BODY */}
       <div style={{ display: "flex", height: "calc(100vh - 55px)" }}>
 
-        {/* Col 1: Sidebar filtros (desktop) — se muestra/oculta con el embudo */}
+        {/* Col 1: Sidebar filtros — visible solo si showSidebar */}
         {isDesktop && showSidebar && (
           <div style={{ width: 200, borderRight: "1px solid " + colors.border, overflowY: "auto", flexShrink: 0 }}>
             <SidebarFiltros filtros={filtros} setFiltros={setFiltros} isMobile={false} />
@@ -100,7 +100,7 @@ export default function App() {
           onAbrirFiltroMobile={function() { setShowFiltroMobile(true); }}
         />
 
-        {/* Col 3: Panel detalle (desktop) */}
+        {/* Col 3: Panel detalle — visible solo si hay selected */}
         {isDesktop && selected && (
           <div style={{ width: 480, borderLeft: "1px solid " + colors.border, flexShrink: 0, display: "flex", flexDirection: "column" }}>
             <PanelDetalle detalle={DETALLE} onClose={function() { setSelected(null); }} inline={true} />
