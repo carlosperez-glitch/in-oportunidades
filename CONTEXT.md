@@ -70,3 +70,33 @@ construir strings con concatenación, para que los acentos se preserven.
 - **Todo inline style**: sin CSS externo, sin Tailwind, sin módulos CSS. Decisión deliberada para mantener todo el contexto en un solo archivo por componente.
 - **Responsive manual**: el layout cambia entre mobile y desktop con `isDesktop` (detectado en App.jsx). No hay breakpoints de CSS.
 - **Campos vacíos invisibles**: el componente `Campo` en PanelDetalle no renderiza nada si `valor` es falsy. Patrón usado en todo el panel de detalle.
+
+
+---
+
+## Procedimiento de trabajo con Claude — aprendizajes
+
+### Flujo óptimo para editar un archivo (todo en UNA llamada javascript_tool)
+1. GET /contents/{path} — obtiene content (base64) + SHA en una sola llamada
+2. Decodificar UTF-8 correctamente (ver snippet abajo)
+3. Modificar en JS (split / filter / replace)
+4. Verificar resultado con .filter() antes de subir
+5. Recodificar y hacer PUT con el SHA obtenido en paso 1
+
+Evitar: usar bash_tool para leer archivos, múltiples roundtrips, asumir que /home/claude/ está sincronizado.
+
+### Encoding UTF-8 — CRÍTICO (sin esto se corrompen ó, é, ñ...)
+Decode: const b=Uint8Array.from(atob(s.replace(/\n/g,'')),c=>c.charCodeAt(0)); new TextDecoder('utf-8').decode(b)
+Encode: const e=new TextEncoder().encode(s); let r=''; e.forEach(b=>r+=String.fromCharCode(b)); btoa(r)
+
+### Regla de oro al inicio de cada sesión
+Hacer siempre GET del archivo desde GitHub para obtener contenido real y SHA actual.
+No asumir que /home/claude/ está sincronizado (puede ser de sesión anterior).
+Si el contexto compactado dice que un cambio "ya estaba hecho", verificarlo con GET.
+
+### Por qué las sesiones se alargan
+Casi siempre por re-descubrir el estado real del código al inicio. Solución: GET antes de tocar nada.
+
+### Credenciales
+Token GitHub: ver en Keychain del Mac (no guardar en el repo).
+Repo: carlosperez-glitch/in-oportunidades — rama: main — URL local: http://localhost:5174
