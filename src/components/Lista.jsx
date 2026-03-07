@@ -1,30 +1,42 @@
-import { estadoColor } from "../theme";
+import { estadoColor, colors } from "../theme";
 
 // Props:
 // - filtradas: op[] — lista ya filtrada y ordenada
 // - selected: op | null
 // - setSelected: fn
 // - isDesktop: bool
-// - totalFiltros: number — para el badge del embudo
+// - totalFiltros: number — para el badge del embudo (solo mobile)
+// - showSidebar: bool — estado del sidebar en desktop (embudo coloreado si abierto)
+// - onToggleSidebar: fn — toggle sidebar en desktop
 // - onAbrirFiltroMobile: fn — solo en mobile
 
-export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, onAbrirFiltroMobile }) {
+export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, showSidebar, onToggleSidebar, onAbrirFiltroMobile }) {
+  function handleEmbudo() {
+    if (isDesktop) { if (onToggleSidebar) onToggleSidebar(); }
+    else { if (onAbrirFiltroMobile) onAbrirFiltroMobile(); }
+  }
+
+  // Desktop: embudo coloreado cuando el sidebar está abierto
+  // Mobile: embudo coloreado cuando hay filtros activos
+  var embudoActivo = isDesktop ? showSidebar : totalFiltros > 0;
+
   return (
     <div style={{ flex: 1, overflowY: "auto", minWidth: 0 }}>
 
       {/* Toolbar */}
       <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", borderBottom: "1px solid #f3f4f6", gap: 10 }}>
         <button
-          onClick={function() { if (!isDesktop && onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
+          onClick={handleEmbudo}
           style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center" }}
         >
           <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
-            <line x1="0" y1="2" x2="18" y2="2" stroke={totalFiltros ? "#7c3aed" : "#374151"} strokeWidth="1.8" />
-            <line x1="3" y1="7" x2="15" y2="7" stroke={totalFiltros ? "#7c3aed" : "#374151"} strokeWidth="1.8" />
-            <line x1="6" y1="12" x2="12" y2="12" stroke={totalFiltros ? "#7c3aed" : "#374151"} strokeWidth="1.8" />
+            <line x1="0" y1="2" x2="18" y2="2" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
+            <line x1="3" y1="7" x2="15" y2="7" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
+            <line x1="6" y1="12" x2="12" y2="12" stroke={embudoActivo ? colors.accion : "#374151"} strokeWidth="1.8" />
           </svg>
-          {totalFiltros > 0 && (
-            <span style={{ position: "absolute", top: -6, right: -8, background: "#7c3aed", color: "#fff", borderRadius: "50%", width: 16, height: 16, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
+          {/* Badge solo en mobile cuando hay filtros activos */}
+          {!isDesktop && totalFiltros > 0 && (
+            <span style={{ position: "absolute", top: -6, right: -8, background: colors.accion, color: "#fff", borderRadius: "50%", width: 16, height: 16, fontSize: 10, fontWeight: 700, display: "flex", alignItems: "center", justifyContent: "center" }}>
               {totalFiltros}
             </span>
           )}
