@@ -1,84 +1,72 @@
-# Plataforma IN — Contexto del proyecto
+# IN — Plataforma de inversión inmobiliaria
 
-## Descripción
-App React de gestión de oportunidades de inversión inmobiliaria. Interfaz de 3 columnas (desktop) con filtros, lista y panel de detalle.
+## Qué es este proyecto
+Aplicación web para un grupo de inversores que han realizado el mismo curso de inversión inmobiliaria. Les permite publicar y explorar oportunidades de inversión en activos inmobiliarios en España.
+
+## Roles de usuario
+Todos los miembros pueden actuar como **gestor** o como **inversor** indistintamente:
+- **Gestor**: respecto a las oportunidades que él mismo crea y publica. Puede editar esas oportunidades.
+- **Inversor**: respecto a las oportunidades creadas por otros, si decide participar. Solo puede leer y comentar.
+
+Un mismo usuario puede ser gestor de unas operaciones e inversor en otras simultáneamente.
+
+## Datos de prueba (mocks)
+Mientras no existe servidor real, los datos son ficticios y están hardcodeados en `src/data/mock.js`:
+- `OPORTUNIDADES`: array con las 16 oportunidades que aparecen en la lista.
+- `DETALLE`: objeto con todos los campos de una operación concreta (el chalet de Estepona con "Eddie Brok"). En producción, este objeto vendrá de una llamada a la API usando el id de la oportunidad seleccionada.
+
+Los datos ficticios son deliberados — no son errores ni placeholders olvidados.
+
+## Estructura del proyecto
+```
+in-oportunidades/
+  index.html / package.json / vite.config.js
+  src/
+    App.jsx            ← estado global, filtrado, layout de 3 columnas
+    index.jsx
+    theme.js           ← tokens de diseño (colores, etc.) — usar siempre desde aquí
+    data/
+      mock.js          ← OPORTUNIDADES, DETALLE y constantes
+    components/
+      Lista.jsx        ← columna central con filas de oportunidades
+      SidebarFiltros.jsx ← columna izquierda (desktop) / bottom sheet (mobile)
+      PanelDetalle.jsx ← columna derecha (desktop) / bottom sheet (mobile)
+```
+
+## Entorno local
+- **Mac mini** macOS 13.7, Node v24 (instalado desde nodejs.org — NO usar Homebrew en macOS 13, tarda horas)
+- **Arrancar**: `cd ~/Desktop/in-oportunidades && npm run dev`
+- **URL local**: http://localhost:5174
 
 ## Repo GitHub
 - **URL**: https://github.com/carlosperez-glitch/in-oportunidades
-- **Usuario**: carlosperez-glitch
 - **Rama**: main
-- **Stack**: React 18 + Vite 4
+- **Token**: guardado aparte (no comitear)
 
-## Estructura de archivos
-```
-in-oportunidades/
-  index.html
-  package.json
-  vite.config.js
-  CONTEXT.md         ← este archivo
-  src/
-    App.jsx          ← estado global, filtrado, layout
-    index.jsx        ← punto de entrada
-    theme.js         ← tokens de diseño (colores, tipografía)
-    data/
-      mock.js        ← OPORTUNIDADES (16 items), DETALLE, constantes
-    components/
-      Lista.jsx      ← toolbar + filas de oportunidades
-      SidebarFiltros.jsx  ← filtros desktop/mobile
-      PanelDetalle.jsx    ← 16 secciones, subvistas, lightbox
-```
-
-## Diseño / tokens (theme.js)
-- Fuente: DM Sans (Google Fonts)
-- Rojo logo: `#e53e3e`
-- Morado acción/filtros: `#7c3aed`
-- Capitalizando/Tanteo: `#d97706`
-- En marcha: `#6b7280`
-- Finalizada: `#9ca3af`
-- Fondo fila seleccionada: `#f5f3ff`
-- Estilos: 100% inline (sin CSS externo, sin Tailwind)
-
-## Entorno local del usuario
-- **Mac mini** con macOS 13.7
-- **Node**: v24.14.0 (instalado via nodejs.org .pkg)
-- **Proyecto clonado en**: ~/Desktop/in-oportunidades
-- **Arrancar**: cd ~/Desktop/in-oportunidades && npm run dev
-- **URL local**: http://localhost:5173 (o 5174 si el puerto está ocupado)
-- **Homebrew**: instalado pero NO usar para Node (macOS 13 compila desde fuente, tarda horas)
-
-## Flujo de trabajo
-1. Claude edita archivos via GitHub API (necesita token)
-2. Usuario hace `git pull` en ~/Desktop/in-oportunidades
+## Flujo de trabajo con Claude
+1. Claude edita archivos y los sube a GitHub vía API desde el browser del usuario
+2. Usuario hace `git pull` en terminal
 3. Vite recarga automáticamente (HMR)
 
-## Token GitHub
-- Nombre: "Plataforma inversión inmobiliaria Claude"
-- Regenerar en: https://github.com/settings/tokens
-- Permisos necesarios: solo `repo`
-- Asignarlo con: `window.__TOKEN__ = "ghp_..."` en consola del navegador
+## ⚠️ BUG DE ENCODING UTF-8 — LEER ANTES DE SUBIR ARCHIVOS
+`btoa()` en el browser NO maneja caracteres acentuados (á, é, ó, ú, ñ...).
+Si se usa directamente, los acentos llegan corruptos a GitHub.
 
-## Bugs corregidos
-- ✅ theme.js corrupto (línea `CapI=$talizando`) — fix subido
-- ✅ Typo `DETARLE` en App.jsx — fix subido
+**Solución obligatoria** para subir archivos vía GitHub API desde el browser:
+```js
+function toBase64UTF8(str) {
+  const bytes = new TextEncoder().encode(str);
+  let binary = '';
+  bytes.forEach(b => binary += String.fromCharCode(b));
+  return btoa(binary);
+}
+// Usar toBase64UTF8(contenido) en lugar de btoa(contenido)
+```
 
-## Estado actual (Mar 7, 2026)
-- ✅ Proyecto funcionando en local: http://localhost:5173
-- ✅ Estructura limpia en GitHub (sin duplicados)
-- ✅ Nav, filtros, lista y panel de detalle funcionando
-- ✅ Click en oportunidad muestra panel detalle
-- ⏳ Columnas de lista ligeramente estrechas (Estado/Gestor se truncan)
+Adicionalmente, pasar el contenido como template literal (`...`) en lugar de
+construir strings con concatenación, para que los acentos se preserven.
 
-## Próximas tareas pendientes
-1. Revisar layout de columnas en Lista (Estado/Gestor truncados)
-2. Pantalla de creación de oportunidad (formulario del gestor)
-3. Funcionalidad real de "Solicitar invertir" y "Ver presentación"
-4. Mapa real en sección Estado actual
-5. Upload real de fotos y documentos
-6. Resto de pestañas: Novedades, Mi perfil, Servicios, Productos, Comunidad
-
-## Instrucciones para Claude en nueva conversación
-1. Leer este archivo CONTEXT.md
-2. Pedir al usuario token GitHub si hace falta (regenerar en https://github.com/settings/tokens)
-3. Para ver la app: el usuario abre Terminal, cd ~/Desktop/in-oportunidades && npm run dev, abre http://localhost:5173
-4. Para hacer cambios: editar via GitHub API con PUT, luego usuario hace git pull en la segunda pestaña de Terminal
-5. La primera pestaña de Terminal siempre tiene Vite corriendo (no se puede escribir ahí)
+## Decisiones de diseño
+- **Todo inline style**: sin CSS externo, sin Tailwind, sin módulos CSS. Decisión deliberada para mantener todo el contexto en un solo archivo por componente.
+- **Responsive manual**: el layout cambia entre mobile y desktop con `isDesktop` (detectado en App.jsx). No hay breakpoints de CSS.
+- **Campos vacíos invisibles**: el componente `Campo` en PanelDetalle no renderiza nada si `valor` es falsy. Patrón usado en todo el panel de detalle.
