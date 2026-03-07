@@ -411,8 +411,9 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               );
             })}
           </div>
+          <Divider />
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Destino del activo y por qué</div>
+            <Lbl>Destino del activo y por qué</Lbl>
             <Txt text={d.destino} />
           </div>
           <div style={{ marginBottom: 14 }}>
@@ -443,32 +444,20 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <div ref={function(el) { refs.current["precio"] = el; }}>
           <div style={{ marginBottom: 16 }}>
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
-              <Campo label="Referencia"           valor={pv.paso0 && pv.paso0.referencia} />
-              <Campo label="Localidad"            valor={pv.paso0 && pv.paso0.localidad} />
-              <Campo label="Municipio"            valor={pv.paso0 && pv.paso0.municipio} />
-              <Campo label="CP"                   valor={pv.paso0 && pv.paso0.cp} />
-              <Campo label="Provincia"            valor={pv.paso0 && pv.paso0.provincia} />
-              <Campo label="Tipo inmueble"        valor={pv.paso0 && pv.paso0.tipoInmueble} />
-              <Campo label="Sup. terreno (m2)"    valor={pv.paso0 && pv.paso0.superficieTerreno} />
-              <Campo label="Sup. construida (m2)" valor={pv.paso0 && pv.paso0.superficieConstruida} />
-              <Campo label="Año construcción"     valor={pv.paso0 && pv.paso0.anoConstruccion} />
-              <Campo label="Nº plantas"           valor={pv.paso0 && pv.paso0.nPlantas} />
-              <Campo label="VPO"                  valor={pv.paso0 && pv.paso0.vpo} />
-              <Campo label="Anexos"               valor={pv.paso0 && pv.paso0.anexos} />
-              <Campo label="Ref. catastral"       valor={pv.paso0 && pv.paso0.referenciaCatastral} />
-              <Campo label="Origen"               valor={pv.paso0 && pv.paso0.origen} />
-              <Campo label="Reformada"            valor={pv.paso0 && pv.paso0.reformada} />
-              <Campo label="Necesita reforma"     valor={pv.paso0 && pv.paso0.necesitaReforma} />
-              <Campo label="Target comprador"     valor={pv.paso0 && pv.paso0.targetComprador} />
-              <Campo label="Mandamientos"         valor={pv.paso0 && pv.paso0.mandamientos} />
-              <Campo label="Total cargas"         valor={pv.paso0 && (pv.paso0.totalCargas !== "" ? pv.paso0.totalCargas : null)} />
+            <div style={{ marginTop: 6, fontSize: 14, color: "#374151", lineHeight: 1.8 }}>
+              {[
+                pv.paso0.supTerreno ? pv.paso0.supTerreno + " m² de terreno" : null,
+                pv.paso0.supConstruida ? pv.paso0.supConstruida + " m² construidos" : null,
+                pv.paso0.tipoInmueble || null,
+                [pv.paso0.localidad, pv.paso0.provincia].filter(Boolean).join(", ") || null,
+              ].filter(Boolean).map(function(line, i) {
+                return <div key={i}>{line}</div>;
+              })}
             </div>
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
-              <div style={{ marginTop: 8 }}>
-                <Lbl>Cargas</Lbl>
+              <div style={{ marginTop: 4 }}>
                 {pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).map(function(c, i) {
-                  return <div key={i} style={{ fontSize: 14, color: "#374151" }}>{c.acreedor}: {c.importe}</div>;
+                  return <div key={i} style={{ fontSize: 14, color: "#374151" }}>{"Carga de " + c.acreedor + (c.importe ? ": " + c.importe.toLocaleString() + " €" : "")}</div>;
                 })}
               </div>
             )}
@@ -481,7 +470,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                       <span style={{ fontSize: 15, fontWeight: 600, color: "#111" }}>{item.agencia}</span>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: colors.accion }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
+                      <span style={{ fontSize: 15, fontWeight: 700, color: "#374151" }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
                     </div>
                     <div style={{ fontSize: 14, color: "#6b7280" }}>{item.direccion} · {item.contacto} · {item.telefono}</div>
                   </div>
@@ -497,7 +486,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
                     <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
                       <span style={{ fontSize: 15, fontWeight: 600, color: "#111" }}>{item.titulo}</span>
-                      <span style={{ fontSize: 15, fontWeight: 700, color: colors.accion }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
+                      <span style={{ fontSize: 15, fontWeight: 700, color: "#374151" }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
                     </div>
                     <div style={{ fontSize: 14, color: "#6b7280" }}>
                       {[item.tipo, item.m2 ? item.m2 + " m2" : "", item.dormBanos ? item.dormBanos + " dorm/baños" : "", item.estado, item.fechaAnuncio].filter(Boolean).join(" · ")}
@@ -669,7 +658,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
       {/* Footer fijo */}
       <div style={{ padding: "12px 20px", borderTop: "1px solid #f3f4f6", display: "flex", gap: 10, flexShrink: 0, background: "#fff" }}>
         <button style={{ flex: 1, padding: "10px", border: "1.5px solid #e5e7eb", borderRadius: 8, background: "#fff", fontSize: 15, fontFamily: "inherit", cursor: "pointer", color: "#374151", fontWeight: 500 }}>Ver presentación</button>
-        <button style={{ flex: 1, padding: "10px", border: "none", borderRadius: 8, background: colors.accion, fontSize: 15, fontFamily: "inherit", cursor: "pointer", color: "#fff", fontWeight: 600 }}>Solicitar invertir</button>
+        <button style={{ flex: 1, padding: "10px", border: "none", borderRadius: 8, background: "#1C0963", fontSize: 15, fontFamily: "inherit", cursor: "pointer", color: "#fff", fontWeight: 600 }}>Solicitar invertir</button>
       </div>
 
       {lb.open && (
