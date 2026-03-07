@@ -15,7 +15,7 @@ export const colors = {
 
   // Texto
   primary:   "#111111",
-  secondary: "#333333",
+  secondary: "#000000",
   muted:     "#6b7280",
   placeholder: "#9ca3af",
 
