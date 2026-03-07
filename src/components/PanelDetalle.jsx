@@ -208,6 +208,27 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   var secLabel = (SECCIONES.find(function(s) { return s.id === seccion; }) || {}).label || "Resumen";
 
+  // Actualiza el item del dropdown según la sección visible al hacer scroll
+  useEffect(function() {
+    var container = scrollRef.current;
+    if (!container) return;
+    function onScroll() {
+      var headerH = 45; // altura aproximada del header sticky del panel
+      var trigger = headerH;
+      var current = null;
+      SECCIONES.forEach(function(s) {
+        var el = refs.current[s.id];
+        if (!el) return;
+        var top = el.getBoundingClientRect().top - container.getBoundingClientRect().top;
+        if (top <= trigger) current = s.id;
+      });
+      if (current) setSeccion(current);
+    }
+    container.addEventListener('scroll', onScroll, { passive: true });
+    return function() { container.removeEventListener('scroll', onScroll); };
+  }, []);
+
+
   // Tabla resumen aportación/reparto
   var ap = d.aportacion || { gestor: { ap: 40, apK: 92, rep: 60, repK: 120 }, inversor: { ap: 60, apK: 138, rep: 40, repK: 80 } };
   function roiAbs(repK, apK) { return apK > 0 ? Math.round((repK / apK) * 100) : 0; }
@@ -289,7 +310,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 12 }}>
             <div><Lbl>Estado</Lbl><div style={{ fontSize: 14, color: estadoColor[d.estado] || "#374151" }}>{d.estado}</div></div>
-            <div><Lbl>Gestor</Lbl><div style={{ fontSize: 14, color: colors.accion, fontWeight: 500 }}>{d.gestor} {d.gestorRating}★</div></div>
+            <div><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: "#374151" }}> {d.gestorRating}★</span></div>
             <div><Lbl>Estrategia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.estrategia}</div></div>
             <div><Lbl>Tipo</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.tipo}</div></div>
           </div>
@@ -596,6 +617,9 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["documentacion"] = el; }}>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            {d.documentos.filter(function(doc) { return !!doc.nombre; }).length === 0 && (
+              <div style={{ fontSize: 14, color: "#9ca3af" }}>No hay documentación</div>
+            )}
             {d.documentos.filter(function(doc) { return !!doc.nombre; }).map(function(doc, i) {
               return (
                 <button key={i}
@@ -615,7 +639,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           {d.observaciones.slice(0, 2).map(function(o, i) {
             return (
               <div key={i} style={{ padding: "10px 0", borderBottom: "1px solid #f3f4f6" }}>
-                <div style={{ fontSize: 14, fontWeight: 600, color: o.esGestor ? colors.accion : "#111", marginBottom: 3 }}>{o.autor}</div>
+                <div style={{ fontSize: 14, fontWeight: 600, color: "#111", marginBottom: 3 }}>{o.autor}</div>
                 <div style={{ fontSize: 15, color: "#374151" }}>{o.texto}</div>
               </div>
             );
