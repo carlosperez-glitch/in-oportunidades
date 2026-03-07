@@ -391,11 +391,11 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["analisis"] = el; }}>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Por qué es rentable</div>
+            <Lbl>Por qué es rentable</Lbl>
             <Txt text={d.porQueRentable} />
           </div>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Desglose de la inversión</div>
+            <Lbl>Desglose de la inversión</Lbl>
             {[d.desglose.t1, d.desglose.t2, d.desglose.t3].map(function(tabla, ti) {
               return (
                 <div key={ti} style={{ marginBottom: 10 }}>
@@ -416,13 +416,12 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <Txt text={d.destino} />
           </div>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Escenarios</div>
-            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 8 }}>
-              {[["Pesimista", d.escenarios.pesimista, "#fef3c7"], ["Realista", d.escenarios.realista, "#f0fdf4"], ["Optimista", d.escenarios.optimista, "#eff6ff"]].map(function(e) {
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 12, marginBottom: 8 }}>
+              {[["Pesimista", d.escenarios.pesimista], ["Realista", d.escenarios.realista], ["Optimista", d.escenarios.optimista]].map(function(e) {
                 return (
-                  <div key={e[0]} style={{ background: e[2], borderRadius: 8, padding: "10px 12px", textAlign: "center" }}>
+                  <div key={e[0]}>
                     <Lbl>{e[0]}</Lbl>
-                    <div style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>{e[1]} EUR</div>
+                    <div style={{ fontSize: 14, color: "#374151" }}>{e[1]} EUR</div>
                   </div>
                 );
               })}
@@ -430,12 +429,12 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <Txt text={d.escenarios.explicacion} />
           </div>
           <div style={{ marginBottom: 8 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Fiscalidad de la compraventa</div>
+            <Lbl>Fiscalidad de la compraventa</Lbl>
             <Txt text={d.fiscalidadCompra} />
           </div>
           <div>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 6 }}>Prevención de blanqueo de capitales</div>
-            <span style={{ display: "inline-block", background: d.pbc === "Necesaria" ? "#fef3c7" : "#f0fdf4", borderRadius: 20, padding: "3px 12px", fontSize: 14, fontWeight: 600, color: d.pbc === "Necesaria" ? "#92400e" : "#166534" }}>{d.pbc}</span>
+            <Lbl>Prevención de blanqueo de capitales</Lbl>
+            <div style={{ fontSize: 14, color: "#374151" }}>{d.pbc}</div>
           </div>
         </div>
 
@@ -443,7 +442,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["precio"] = el; }}>
           <div style={{ marginBottom: 16 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 10 }}>Paso 0 · Ficha del inmueble</div>
+            <Lbl>Paso 0 · Ficha del inmueble</Lbl>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
               <Campo label="Referencia"           valor={pv.paso0 && pv.paso0.referencia} />
               <Campo label="Localidad"            valor={pv.paso0 && pv.paso0.localidad} />
@@ -476,7 +475,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </div>
           {pv.paso1 && pv.paso1.filter(function(x) { return !!x.agencia; }).length > 0 && (
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 10 }}>Paso 1 · Comparables vendidos</div>
+              <Lbl>Paso 1 · Comparables vendidos</Lbl>
               {pv.paso1.filter(function(x) { return !!x.agencia; }).map(function(item, i) {
                 return (
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
@@ -492,7 +491,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           )}
           {pv.paso2 && pv.paso2.filter(function(x) { return !!x.titulo; }).length > 0 && (
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 10 }}>Paso 2 · Comparables en venta</div>
+              <Lbl>Paso 2 · Comparables en venta</Lbl>
               {pv.paso2.filter(function(x) { return !!x.titulo; }).map(function(item, i) {
                 return (
                   <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
@@ -511,7 +510,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           )}
           {pv.paso3 && (
             <div style={{ marginBottom: 16 }}>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Paso 3 · Conclusiones</div>
+              <Lbl>Paso 3 · Conclusiones</Lbl>
               <div style={{ padding: "12px 14px", background: "#f9fafb", borderRadius: 8, fontSize: 15, color: "#374151", lineHeight: 1.6 }}>
                 {pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
               </div>
@@ -519,7 +518,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           )}
           {pv.paso4 && (
             <div>
-              <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 10 }}>Paso 4 · Seguimiento del anuncio</div>
+              <Lbl>Paso 4 · Seguimiento del anuncio</Lbl>
               <Campo label="URL del anuncio"       valor={pv.paso4.url} />
               <Campo label="Fecha de publicación"  valor={pv.paso4.fechaPublicacion} />              {pv.paso4.dias && pv.paso4.dias.length > 0 && (
                 <div style={{ overflowX: "auto", marginBottom: 10, marginTop: 8 }}>
