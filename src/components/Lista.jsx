@@ -49,7 +49,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           <span style={{ width: 50, textAlign: "right" }}>ROI</span>
           <span style={{ width: 36, textAlign: "right" }}>Mes.</span>
           <span style={{ width: 50, textAlign: "right" }}>Tipo</span>
-          {isDesktop && <span style={{ width: 120, paddingLeft: 12 }}>Estado</span>}
+          {isDesktop && <span style={{ paddingLeft: 12, whiteSpace: "nowrap" }}>Estado</span>}
           {isDesktop && <span style={{ width: 170, paddingLeft: 12 }}>Gestor</span>}
         </div>
       </div>
@@ -81,7 +81,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               <span style={{ width: 36, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.meses}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 12, color: "#6b7280" }}>{op.tipo}</span>
               {isDesktop && (
-                <span style={{ width: 120, paddingLeft: 12, fontSize: 12, color: estadoColor[op.estado] || "#374151", fontWeight: 500 }}>
+                <span style={{ paddingLeft: 12, fontSize: 12, color: estadoColor[op.estado] || "#374151", fontWeight: 500, whiteSpace: "nowrap" }}>
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
                 </span>
               )}
