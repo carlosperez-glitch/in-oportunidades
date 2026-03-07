@@ -111,11 +111,32 @@ export const DETALLE = {
       ],
     },
     paso1: [
-      { agencia: "RE/MAX Estepona", precio: "380.000", m2: 120, url: "https://remax.es/123" },
-      { agencia: "Engel & Völkers", precio: "420.000", m2: 135, url: "https://engelvoelkers.com/456" },
-      { agencia: "Inmobiliaria Costa", precio: "355.000", m2: 110, url: "https://costasur.es/789" },
-    ],
-    paso2: [
+    {
+      agencia: "RE/MAX Estepona",
+      contacto: "Álvaro Fernández",
+      telefono: "952 80 14 23",
+      direccion: "Av. Litoral, 12 · Estepona",
+      precioVenta: 360000,
+      feedback: "Propiedad con buena acogida en el mercado. El perfil de comprador habitual en la zona es extranjero (norte de Europa) y valora especialmente la piscina privada y el jardín. Recomiendan fijar precio entre 350.000 y 370.000 EUR."
+    },
+    {
+      agencia: "Engel & Völkers Costa del Sol",
+      contacto: "Sandra Müller",
+      telefono: "951 33 72 10",
+      direccion: "C/ Real, 8 · Estepona Centro",
+      precioVenta: 355000,
+      feedback: "El chalet encaja bien con la demanda de familias que buscan primera o segunda residencia. La reforma mediterránea contemporánea será un diferencial claro. Aconsejan destacar la parcela de 554 m² en la comercialización."
+    },
+    {
+      agencia: "Inmobiliaria Costa & Mar",
+      contacto: "Raúl Domínguez",
+      telefono: "952 79 55 41",
+      direccion: "Urb. Valle Romano, local 3 · Estepona",
+      precioVenta: 345000,
+      feedback: "Buena ubicación dentro del valle. Señalan que el trastero y el garaje son puntos de venta fuertes. Estiman un plazo de venta de 6-8 semanas una vez terminada la reforma si se fija precio competitivo."
+    },
+  ],
+        paso2: [
       { titulo: "Chalet Valle Romano", precio: "395.000", m2: 118, diasEnVenta: 45, url: "https://idealista.com/a1" },
       { titulo: "Villa Estepona Golf", precio: "445.000", m2: 140, diasEnVenta: 90, url: "https://idealista.com/a2" },
       { titulo: "Casa adosada centro", precio: "320.000", m2: 105, diasEnVenta: 30, url: "https://fotocasa.es/a3" },
@@ -127,11 +148,14 @@ export const DETALLE = {
       url: "https://idealista.com/inmueble/98765432/",
       fechaPublicacion: "15.02.2025",
       dias: [
-        { visitas: 42, contactos: 8, visitas_presenciales: 3 },
-        { visitas: 38, contactos: 6, visitas_presenciales: 2 },
-        { visitas: 29, contactos: 4, visitas_presenciales: 1 },
-      ],
-      interesados: [
+      { visitas: 312, contactos: 4, favoritos: 28, bajada: 0 },
+      { visitas: 278, contactos: 3, favoritos: 31, bajada: 0 },
+      { visitas: 245, contactos: 2, favoritos: 27, bajada: 0 },
+      { visitas: 301, contactos: 5, favoritos: 34, bajada: 0 },
+      { visitas: 189, contactos: 1, favoritos: 22, bajada: 0 },
+      { visitas: 223, contactos: 3, favoritos: 29, bajada: 0 },
+    ],
+            interesados: [
         { nombre: "John Smith", telefono: "+44 7911 123456", nacionalidad: "Británico", comentarios: "Busca segunda residencia, presupuesto hasta 380k" },
         { nombre: "Hans Mueller", telefono: "+49 171 9876543", nacionalidad: "Alemán", comentarios: "Muy interesado, visita prevista semana próxima" },
       ],
