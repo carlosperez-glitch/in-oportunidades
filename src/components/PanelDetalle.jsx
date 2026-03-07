@@ -519,13 +519,13 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           {pv.paso4 && (
             <div>
               <Lbl>Paso 4 · Seguimiento del anuncio</Lbl>
-              <Campo label="URL del anuncio"       valor={pv.paso4.url} />
-              <Campo label="Fecha de publicación"  valor={pv.paso4.fechaPublicacion} />              {pv.paso4.dias && pv.paso4.dias.length > 0 && (
+              <Campo label="" valor={pv.paso4.url} />
+              <Campo label="" valor={pv.paso4.fechaPublicacion} />              {pv.paso4.dias && pv.paso4.dias.length > 0 && (
                 <div style={{ overflowX: "auto", marginBottom: 10, marginTop: 8 }}>
                   <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13, whiteSpace: "nowrap" }}>
                     <thead>
                       <tr style={{ borderBottom: "2px solid #e5e7eb" }}>
-                        {["", "Total", ...pv.paso4.dias.map(function(d, i) { return "Día " + (i+1); })].map(function(h) {
+                        {["", ...pv.paso4.dias.map(function(d, i) { return "Día " + (i+1); }), "Total"].map(function(h) {
                           return <th key={h} style={{ padding: "4px 8px", textAlign: h === "" ? "left" : "right", color: "#9ca3af", fontWeight: 600 }}>{h}</th>;
                         })}
                       </tr>
