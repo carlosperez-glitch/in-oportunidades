@@ -385,17 +385,18 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <Divider />
           <div>
               {/* Cabecera única */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "0 10px 4px" }}>
+              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "0 10px 4px" }}>
                 <Lbl>Fase</Lbl>
                 <Lbl>Acciones</Lbl>
-                <Lbl>Duración</Lbl>
               </div>
               {d.fases.map(function(f, i) {
                 return (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
-                    <div style={{ fontSize: 14, fontWeight: 600, color: "#111" }}>{f.fase}</div>
+                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
+                    <div>
+                      <div style={{ fontSize: 14, fontWeight: 600, color: "#111" }}>{f.fase}</div>
+                      <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>{f.duracion}</div>
+                    </div>
                     <div style={{ fontSize: 14, color: "#374151", lineHeight: 1.5 }}>{f.acciones}</div>
-                    <div style={{ fontSize: 14, color: "#6b7280" }}>{f.duracion}</div>
                   </div>
                 );
               })}
