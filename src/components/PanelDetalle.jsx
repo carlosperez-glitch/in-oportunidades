@@ -320,7 +320,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── EQUIPO GESTOR ────────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["equipo"] = el; }}>
-          <SecTitle>Equipo gestor</SecTitle>
           <div style={{ marginBottom: 14 }}><Txt text={d.sobreMi} /></div>
           <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 10 }}>
             {[
@@ -338,7 +337,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── GESTIÓN ──────────────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["gestion"] = el; }}>
-          <SecTitle>Gestión</SecTitle>
           <div style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Estado actual</div>
             <div style={{ marginBottom: 8 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 15, fontWeight: 600, color: "#111" }}>{d.estadoActual.valoracion}</div></div>
@@ -385,7 +383,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── ANÁLISIS ECONÓMICO ───────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["analisis"] = el; }}>
-          <SecTitle>Análisis económico</SecTitle>
           <div style={{ marginBottom: 14 }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Por qué es rentable</div>
             <Txt text={d.porQueRentable} />
@@ -438,7 +435,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── PRECIO DE VENTA ──────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["precio"] = el; }}>
-          <SecTitle>Precio de venta</SecTitle>
           <div style={{ marginBottom: 16 }}>
             <div style={{ fontSize: 12, fontWeight: 600, color: "#374151", marginBottom: 10 }}>Paso 0 · Ficha del inmueble</div>
             <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: 6 }}>
@@ -583,7 +579,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── SOLVENCIA Y TRANSPARENCIA ────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["solvencia"] = el; }}>
-          <SecTitle>Solvencia y transparencia</SecTitle>
           <Campo label="Quién compra"                     valor={d.solvencia.comprador} />
           <Campo label="Comunicación y periodicidad"      valor={d.solvencia.comunicacion} />
           <Campo label="Banco"                            valor={d.solvencia.banco} />
@@ -598,7 +593,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── DOCUMENTACIÓN ────────────────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["documentacion"] = el; }}>
-          <SecTitle>Documentación</SecTitle>
           <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
             {d.documentos.filter(function(doc) { return !!doc.nombre; }).map(function(doc, i) {
               return (
@@ -617,7 +611,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["observaciones"] = el; }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <SecTitle>Observaciones y preguntas</SecTitle>
             <button onClick={function() { setSubvista("observaciones"); }} style={{ background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 12, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
               Ver todas ({d.observaciones.length}) →
             </button>
@@ -639,7 +632,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["resenas"] = el; }}>
           <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
-            <SecTitle>Reseñas de la operación</SecTitle>
             <button onClick={function() { setSubvista("resenas"); }} style={{ background: "none", border: "none", cursor: "pointer", color: colors.accion, fontSize: 12, fontWeight: 600, fontFamily: "inherit", padding: 0 }}>
               Ver todas ({d.resenas.length}) →
             </button>
