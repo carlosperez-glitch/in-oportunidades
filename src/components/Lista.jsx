@@ -1,3 +1,4 @@
+import { useMemo } from "react";
 import { estadoColor, colors } from "../theme";
 
 // Props:
