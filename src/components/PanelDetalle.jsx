@@ -612,7 +612,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── OBSERVACIONES Y PREGUNTAS ─────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["observaciones"] = el; }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
           {d.observaciones.slice(0, 2).map(function(o, i) {
             return (
               <div key={i} style={{ padding: "10px 0", borderBottom: "1px solid #f3f4f6" }}>
@@ -629,7 +628,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── RESEÑAS DE LA OPERACIÓN ──────────────────────────────────────── */}
         <Divider />
         <div ref={function(el) { refs.current["resenas"] = el; }}>
-          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 10 }}>
           <div style={{ display: "flex", alignItems: "center", gap: 8, marginBottom: 12 }}>
             <Stars n={d.gestorRating} />
             <span style={{ fontSize: 15, fontWeight: 700, color: "#111" }}>{d.gestorRating}</span>
