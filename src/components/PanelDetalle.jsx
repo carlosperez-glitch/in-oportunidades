@@ -20,7 +20,7 @@ function Lbl({ children }) {
   return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3 }}>{children}</div>;
 }
 function Divider() {
-  return <div style={{ height: 1, background: "#f3f4f6", margin: "18px 0" }} />;
+  return <div style={{ height: 1, background: "#dbdbdb", margin: "18px 0" }} />;
 }
 function SecTitle({ children }) {
   return <div style={{ fontSize: 13, fontWeight: 700, color: "#374151", marginBottom: 10, textTransform: "uppercase", letterSpacing: "0.06em" }}>{children}</div>;
@@ -346,7 +346,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["gestion"] = el; }}>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Estado actual</div>
+            <Lbl>Estado actual</Lbl>
             <div style={{ marginBottom: 8 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 17, fontWeight: 600, color: "#111" }}>{d.estadoActual.valoracion}</div></div>
             <div style={{ marginBottom: 8 }}><Txt text={d.estadoActual.descripcion} /></div>
             <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
@@ -357,7 +357,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 8 }}>Mapa</div>
           </div>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Problema y solución</div>
             <div style={{ marginBottom: 8 }}><Lbl>Problema</Lbl><Txt text={d.problema} /></div>
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
