@@ -599,7 +599,10 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 </div>
               )}
               {pv.paso4.comentarios && (
-                <div style={{ padding: "10px 12px", background: "#fef3c7", borderRadius: 8, fontSize: 14, color: "#92400e" }}>{pv.paso4.comentarios}</div>
+                <div style={{ marginTop: 8 }}>
+                  <Lbl>Conclusión</Lbl>
+                  <div style={{ fontSize: 14, color: "#374151" }}>{pv.paso4.comentarios}</div>
+                </div>
               )}
             </div>
           )}
