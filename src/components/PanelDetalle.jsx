@@ -361,8 +361,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ fontSize: 14, fontWeight: 600, color: "#374151", marginBottom: 8 }}>Fases de la operación</div>
-            <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
+            <Divider />
+          <div style={{ display: "flex", flexDirection: "column", gap: 6 }}>
               {d.fases.map(function(f, i) {
                 return (
                   <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr 1fr", gap: 8, padding: "8px 10px", background: "#f9fafb", borderRadius: 8 }}>
