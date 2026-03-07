@@ -100,3 +100,16 @@ Casi siempre por re-descubrir el estado real del código al inicio. Solución: G
 ### Credenciales
 Token GitHub: ver en Keychain del Mac (no guardar en el repo).
 Repo: carlosperez-glitch/in-oportunidades — rama: main — URL local: http://localhost:5174
+
+## Jerarquía visual en PanelDetalle
+
+Hay tres niveles de texto, y la elección correcta es semántica:
+
+| Elemento | Cuándo usarlo | Aspecto |
+|---|---|---|
+| `<SecTitle>` | Nombre de una **sección de navegación** (las del dropdown). Se ha eliminado de dentro del contenido porque el dropdown ya cumple esa función. | 11px, uppercase, bold, #374151 |
+| `<Lbl>` | Etiqueta de un **campo o grupo de campos** dentro de una sección. La mayoría de textos descriptivos son esto. | 12px, uppercase, #737373 |
+| Texto de campo | El **valor** de un campo. Usa `<Txt>` para párrafos o un `<div>` con fontSize 14, color #374151. | 14px, #374151 |
+
+**Regla práctica**: si hay un valor debajo, es un `<Lbl>`. Si es el título de un bloque navegable, es `<SecTitle>` (y probablemente ya está en el dropdown, así que no hace falta repetirlo dentro del contenido).
+
