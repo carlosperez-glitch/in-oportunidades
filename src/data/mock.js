@@ -97,6 +97,9 @@ export const DETALLE = {
     explicacion: "Planteamos la propuesta con un enfoque prudente, priorizando el plazo de venta al precio.",
   },
   fiscalidad: { compra: "Compra con 7% de ITP", pbc: "Innecesario" },
+  fiscalidadCompra: "Compraventa al 10% de ITP",
+  pbc: "Innecesario",
+  titulo: "21 viviendas en Alicante",
   solvencia: {
     comprador: "Compra a traves de la sociedad EASYVENTA, S.L. Esta sociedad fue constituida este mismo ano, sin empleados ni mas actividad que la propia.",
     comunicacion: "Grupo de Whatsapp con los INversores, reunion mensual por Zoom",
