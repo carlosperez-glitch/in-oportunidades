@@ -17,7 +17,7 @@ const SECCIONES = [
 
 // ─── Helpers de UI ────────────────────────────────────────────────────────────
 function Lbl({ children }) {
-  return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 3 }}>{children}</div>;
+  return <div style={{ fontSize: 12, color: "#737373", textTransform: "uppercase", letterSpacing: "0.05em", marginBottom: 7 }}>{children}</div>;
 }
 function Divider() {
   return <div style={{ height: 1, background: "#dbdbdb", margin: "18px 0" }} />;
@@ -308,16 +308,16 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
         {/* ── RESUMEN ──────────────────────────────────────────────────────── */}
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr 1fr", gap: 8, marginBottom: 12 }}>
-            <div><Lbl>Estado</Lbl><div style={{ fontSize: 14, color: estadoColor[d.estado] || "#374151" }}>{d.estado}</div></div>
-            <div><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: "#374151" }}> {d.gestorRating}★</span></div>
-            <div><Lbl>Estrategia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.estrategia}</div></div>
-            <div><Lbl>Tipo</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.tipo}</div></div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px", marginBottom: 12 }}>
+            <div style={{ width: "fit-content" }}><Lbl>Estado</Lbl><div style={{ fontSize: 14, color: "#374151" }}>{d.estado}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: "#374151" }}> {d.gestorRating}★</span></div>
+            <div style={{ width: "fit-content" }}><Lbl>Estrategia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.estrategia}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Tipo</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.tipo}</div></div>
           </div>
-          <div style={{ display: "grid", gridTemplateColumns: "1fr 1fr 1fr", gap: 8, marginBottom: 14 }}>
-            <div><Lbl>Meses</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.meses}</div></div>
-            <div><Lbl>Provincia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.provincia}</div></div>
-            <div><Lbl>Inicio</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.fechaInicio}</div></div>
+          <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px", marginBottom: 14 }}>
+            <div style={{ width: "fit-content" }}><Lbl>Meses</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.meses}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Provincia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.provincia}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Inicio</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.fechaInicio}</div></div>
           </div>
           <Divider />
           {/* Tabla aportación / reparto */}
