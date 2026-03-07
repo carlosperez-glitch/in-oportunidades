@@ -520,6 +520,13 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                       </tr>
                     </thead>
                     <tbody>
+                      <tr style={{ borderBottom: "1px solid #f3f4f6" }}>
+                        <td style={{ padding: "4px 8px", color: "#9ca3af", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>Día</td>
+                        <td style={{ padding: "4px 8px" }}></td>
+                        {pv.paso4.dias.map(function(dia, i) {
+                          return <td key={i} style={{ padding: "4px 8px", textAlign: "right", color: "#9ca3af", fontSize: 11, fontWeight: 600 }}>{i+1}</td>;
+                        })}
+                      </tr>
                       {[
                         { label: "Contactos totales", key: "contactosTotales" },
                         { label: "Llamadas",          key: "llamadas" },
