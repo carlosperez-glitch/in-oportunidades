@@ -346,16 +346,16 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["gestion"] = el; }}>
           <div style={{ marginBottom: 14 }}>
-            <Lbl>Estado actual</Lbl>
-            <div style={{ marginBottom: 8 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 17, fontWeight: 600, color: "#111" }}>{d.estadoActual.valoracion}</div></div>
-            <div style={{ marginBottom: 8 }}><Txt text={d.estadoActual.descripcion} /></div>
-            <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+            <div style={{ marginBottom: 8 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 14, color: "#374151" }}>{d.estadoActual.valoracion}</div></div>
+            <div style={{ marginBottom: 8 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
+            <div style={{ marginBottom: 4 }}><Lbl>Características</Lbl></div><div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
               {d.estadoActual.caracteristicas.map(function(c) {
                 return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 14, color: "#374151" }}>{c}</span>;
               })}
             </div>
-            <div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 8 }}>Mapa</div>
+            <div style={{ marginBottom: 4 }}><Lbl>Ubicación</Lbl></div><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div>
           </div>
+          <Divider />
           <div style={{ marginBottom: 14 }}>
             <div style={{ marginBottom: 8 }}><Lbl>Problema</Lbl><Txt text={d.problema} /></div>
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
