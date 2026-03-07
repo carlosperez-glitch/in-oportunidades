@@ -63,8 +63,10 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
             onClick={function() { setSelected(op); }}
             style={{
               display: "flex", alignItems: "center", padding: "9px 16px",
-              cursor: "pointer", borderBottom: "1px solid #f9fafb",
-              background: isSelected ? "#f5f3ff" : "transparent",
+              cursor: "pointer",
+              borderTop: isSelected ? "1px solid #b3d3e6" : "1px solid transparent",
+              borderBottom: isSelected ? "1px solid #b3d3e6" : "1px solid #f9fafb",
+              background: isSelected ? "#def3ff" : "transparent",
               transition: "background 0.1s",
             }}
           >
