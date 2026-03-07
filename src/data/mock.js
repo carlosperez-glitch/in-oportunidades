@@ -43,6 +43,7 @@ export const DETALLE = {
   situacionActual: "Publicado paso 4 para completar el estudio de mercado. Tenemos firmado el contrato de arras para la compra de la vivienda antes del 30 de septiembre.",
   proximosPasos: "Verificar el precio suelo de venta con la aportacion de valor.\n\nProximos pasos:\n- Seleccion de inversores\n- Presentacion de CCP\n- Firma del CCP y aportaciones a la cuenta de la operacion",
   analisisEconomico: "Esta propiedad se presenta como una de las escasas oportunidades de adquirir una de las tipologias de vivienda de gran demanda en la zona. La reforma con estilo mediterraneo contemporaneo dotara a la vivienda de las mejoras necesarias.",
+  porQueRentable: "Esta propiedad se presenta como una de las escasas oportunidades de adquirir una de las tipologías de vivienda de gran demanda en la zona. Debido a sus características, permite conseguir con una pequeña aportación de valor, un chalet idóneo para muchos potenciales compradores deseosos de residir en la Costa del Sol. La reforma con estilo mediterráneo contemporáneo, actual y confortable dotará a la vivienda de las mejoras que le permitirá posicionarse conforme a las necesidades de la demanda de compradores de chalet en la zona, pudiendo llegar a cerrar un acuerdo de venta una vez finalizada la aportación de valor.",
   desglose: {
     t1: [["Impuesto", "Andalucia"], ["% ITP", "7%"], ["Valor de referencia", "150.000"]],
     t2: [
