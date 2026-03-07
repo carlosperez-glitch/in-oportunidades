@@ -88,6 +88,55 @@ export const DETALLE = {
     { autor: "Marienette Dupain-Cheng", rating: 5, texto: "Estoy impaciente a que vuelvas a proponer otra transaccion.", fecha: "Ago 24" },
     { autor: "Nick Fury",               rating: 5, texto: "FENOMENAL.", fecha: "Ago 24" },
   ],
+  precioVenta: {
+    paso0: {
+      referencia: "3742801WH3474S0001KP",
+      localidad: "Estepona",
+      municipio: "Estepona",
+      cp: "29680",
+      provincia: "Málaga",
+      tipoInmueble: "Chalet independiente",
+      superficieTerreno: 554,
+      superficieConstruida: 113,
+      habitaciones: 4,
+      banos: 3,
+      garajes: 1,
+      trasteros: 1,
+      piscina: true,
+      jardin: true,
+      estadoConservacion: "Reforma iniciada",
+      cargas: [
+        { acreedor: "Banco Santander", importe: "45.000 EUR", tipo: "Hipoteca" },
+      ],
+    },
+    paso1: [
+      { agencia: "RE/MAX Estepona", precio: "380.000", m2: 120, url: "https://remax.es/123" },
+      { agencia: "Engel & Völkers", precio: "420.000", m2: 135, url: "https://engelvoelkers.com/456" },
+      { agencia: "Inmobiliaria Costa", precio: "355.000", m2: 110, url: "https://costasur.es/789" },
+    ],
+    paso2: [
+      { titulo: "Chalet Valle Romano", precio: "395.000", m2: 118, diasEnVenta: 45, url: "https://idealista.com/a1" },
+      { titulo: "Villa Estepona Golf", precio: "445.000", m2: 140, diasEnVenta: 90, url: "https://idealista.com/a2" },
+      { titulo: "Casa adosada centro", precio: "320.000", m2: 105, diasEnVenta: 30, url: "https://fotocasa.es/a3" },
+    ],
+    paso3: {
+      conclusiones: "El precio de venta objetivo de 350.000 EUR está en línea con el mercado. Los comparables vendidos oscilan entre 320.000 y 445.000 EUR para tipologías similares. Con la reforma de cocina y baños en estilo mediterráneo contemporáneo estimamos posicionarnos en la franja media-alta.",
+    },
+    paso4: {
+      url: "https://idealista.com/inmueble/98765432/",
+      fechaPublicacion: "15.02.2025",
+      dias: [
+        { visitas: 42, contactos: 8, visitas_presenciales: 3 },
+        { visitas: 38, contactos: 6, visitas_presenciales: 2 },
+        { visitas: 29, contactos: 4, visitas_presenciales: 1 },
+      ],
+      interesados: [
+        { nombre: "John Smith", telefono: "+44 7911 123456", nacionalidad: "Británico", comentarios: "Busca segunda residencia, presupuesto hasta 380k" },
+        { nombre: "Hans Mueller", telefono: "+49 171 9876543", nacionalidad: "Alemán", comentarios: "Muy interesado, visita prevista semana próxima" },
+      ],
+      comentarios: "Buen ritmo de visitas para la primera semana. Pendiente de recibir oferta formal de Hans Mueller.",
+    },
+  },
 };
 
 export const ORDEN_OPTIONS = [
