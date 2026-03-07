@@ -64,7 +64,7 @@ export const DETALLE = {
     pesimista: "320.000", realista: "350.000", optimista: "450.000",
     explicacion: "Planteamos la propuesta con un enfoque prudente, priorizando el plazo de venta al precio.",
   },
-  fiscalidad: { compra: "Compra con 7% de ITP", pbc: "Necesaria" },
+  fiscalidad: { compra: "Compra con 7% de ITP", pbc: "Innecesario" },
   solvencia: {
     comprador: "Compra a traves de la sociedad EASYVENTA, S.L. Esta sociedad fue constituida este mismo ano, sin empleados ni mas actividad que la propia.",
     comunicacion: "Grupo de Whatsapp con los INversores, reunion mensual por Zoom",
