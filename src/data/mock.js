@@ -129,6 +129,15 @@ export const DETALLE = {
         { acreedor: "Banco Santander", importe: "45.000 EUR", tipo: "Hipoteca" },
       ],
     },
+    // FORMULARIO GESTOR — campos del paso 1 (comparables vendidos)
+    // El inversor ve: agencia, precio, dirección y teléfono de contacto.
+    // El gestor rellena estos campos por cada comparable:
+    //   agencia      → "Agencia"
+    //   contacto     → "Nombre del contacto"
+    //   telefono     → "Teléfono"
+    //   direccion    → "Dirección del inmueble"
+    //   precioVenta  → "Precio de venta (€)"
+    //   feedback     → "Feedback de la agencia"
     paso1: [
     {
       agencia: "RE/MAX Estepona",
@@ -155,7 +164,15 @@ export const DETALLE = {
       feedback: "Buena ubicación dentro del valle. Señalan que el trastero y el garaje son puntos de venta fuertes. Estiman un plazo de venta de 6-8 semanas una vez terminada la reforma si se fija precio competitivo."
     },
   ],
-        paso2: [
+        // FORMULARIO GESTOR — campos del paso 2 (comparables en venta)
+    // El inversor ve: título, precio, m², días en venta.
+    // El gestor rellena estos campos por cada comparable:
+    //   titulo       → "Título del anuncio"
+    //   precio       → "Precio de venta (€)"
+    //   m2           → "Superficie construida (m²)"
+    //   diasEnVenta  → "Días en venta"
+    //   url          → "URL del anuncio"
+    paso2: [
       { titulo: "Chalet Valle Romano", precio: "395.000", m2: 118, diasEnVenta: 45, url: "https://idealista.com/a1" },
       { titulo: "Villa Estepona Golf", precio: "445.000", m2: 140, diasEnVenta: 90, url: "https://idealista.com/a2" },
       { titulo: "Casa adosada centro", precio: "320.000", m2: 105, diasEnVenta: 30, url: "https://fotocasa.es/a3" },
