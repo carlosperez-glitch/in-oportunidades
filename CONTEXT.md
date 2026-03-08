@@ -143,3 +143,45 @@ Cuando se pida a un LLM que genere o valide datos de una oportunidad, se le pued
 - Validar coherencia (ej. que la superficie construida no supere la del terreno)
 - Generar texto condensado para la vista del inversor
 - Calcular ROI y escenarios
+
+## Lecciones aprendidas (bugs resueltos)
+
+### Encoding UTF-8 al subir archivos via GitHub API
+- **NUNCA usar `btoa(string)`** — corrompe caracteres UTF-8 (á, é, ó, ─, etc.)
+- **SIEMPRE usar FileReader + Blob:**
+  ```js
+  const blob = new Blob([txt], { type: 'text/plain' });
+  const b64 = await new Promise((res, rej) => {
+    const fr = new FileReader();
+    fr.onload = () => res(fr.result.split(',')[1]);
+    fr.onerror = rej;
+    fr.readAsDataURL(blob);
+  });
+  ```
+
+### git pull no actualiza el archivo local
+- Si Vite sigue fallando tras `git pull`, usar:
+  ```
+  git fetch origin && git reset --hard origin/main
+  ```
+- Si Vite sigue cacheado tras reset: `rm -rf node_modules/.vite && npm run dev`
+- Si el terminal queda bloqueado (Vite corriendo): cerrar y abrir terminal nuevo
+
+### Caché de Vite
+- El error "Failed to parse source for import analysis" puede ser caché aunque el archivo local esté correcto
+- Limpiar siempre con `rm -rf node_modules/.vite` antes de reiniciar
+
+### Punto y coma suelto en JSX (`;` solo en una línea)
+- Un `;` en una línea dentro de una función de componente React genera un nodo vacío visible
+- Síntoma: aparece un "mini apartado" o div vacío antes del contenido esperado
+- Buscar con: `lines.findIndex(l => l.trim() === ';')`
+
+### Llaves desbalanceadas en mock.js al editar con str_replace via API
+- Tras cada edición de mock.js, verificar balance de llaves:
+  ```js
+  let depth = 0;
+  for (const c of txt) { if (c==='{') depth++; else if (c==='}') depth--; }
+  // debe ser 0
+  ```
+- El error "Expected X but found Y" de esbuild apunta a la línea donde se detecta el desbalance,
+  no necesariamente donde está el problema real — buscar hacia arriba
