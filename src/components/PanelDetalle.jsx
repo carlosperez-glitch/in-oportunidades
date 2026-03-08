@@ -383,7 +383,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
       </div>
 
       {/* Contenido scrollable */}
-      <div ref={scrollRef} style={{ flex: 1, overflowY: "auto", padding: "0 24px 80px" }}>
+      <div ref={scrollRef} style={{ flex: 1, overflowY: "auto", padding: "0 24px 20px" }}>
 
         {/* ── RESUMEN ──────────────────────────────────────────────────────── */}
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
