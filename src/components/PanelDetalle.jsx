@@ -29,7 +29,7 @@ function Txt({ text }) {
   if (!text) return null;
   var paras = String(text).split(/\n\n+/);
   return (
-    <div style={{ fontSize: 14, color: colors.secondary, lineHeight: 1.6 }}>
+    <div style={{ fontSize: 15, color: colors.secondary, lineHeight: 1.6 }}>
       {paras.map(function(p, i) {
         return <p key={i} style={{ margin: 0, marginBottom: i < paras.length - 1 ? 1 : 0, whiteSpace: "pre-line" }}>{p}</p>;
       })}
@@ -257,8 +257,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
     var sv = <SubvistaObservaciones observaciones={d.observaciones} onBack={function() { setSubvista(null); }} />;
     if (inline) return sv;
     return (
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>{sv}</div>
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>{sv}</div>
       </div>
     );
   }
@@ -266,8 +266,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
     var sv2 = <SubvistaResenas resenas={d.resenas} onBack={function() { setSubvista(null); }} />;
     if (inline) return sv2;
     return (
-      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
-        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>{sv2}</div>
+      <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "stretch", justifyContent: "center" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>{sv2}</div>
       </div>
     );
   }
@@ -309,16 +309,16 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         {/* ── RESUMEN ──────────────────────────────────────────────────────── */}
         <div ref={function(el) { refs.current["resumen"] = el; }} style={{ paddingTop: 16 }}>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px", marginBottom: 12 }}>
-            <div style={{ width: "fit-content" }}><Lbl>Operación</Lbl><div style={{ fontSize: 14, color: colors.secondary }}>{d.titulo}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Estado</Lbl><div style={{ fontSize: 14, color: colors.secondary }}>{d.estado}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 14, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 14, color: colors.secondary }}> {d.gestorRating}</span></div>
-            <div style={{ width: "fit-content" }}><Lbl>Estrategia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.estrategia}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Tipo</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.tipo}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Operación</Lbl><div style={{ fontSize: 15, color: colors.secondary }}>{d.titulo}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Estado</Lbl><div style={{ fontSize: 15, color: colors.secondary }}>{d.estado}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Gestor</Lbl><a href="#" style={{ fontSize: 15, color: "#1d4ed8", fontWeight: 500, textDecoration: "underline" }}>{d.gestor}</a><span style={{ fontSize: 15, color: colors.secondary }}> {d.gestorRating}</span></div>
+            <div style={{ width: "fit-content" }}><Lbl>Estrategia</Lbl><div style={{ fontSize: 15, color: "#111" }}>{d.estrategia}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Tipo</Lbl><div style={{ fontSize: 15, color: "#111" }}>{d.tipo}</div></div>
           </div>
           <div style={{ display: "flex", flexWrap: "wrap", gap: "8px 24px", marginBottom: 14 }}>
-            <div style={{ width: "fit-content" }}><Lbl>Meses</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.meses}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Provincia</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.provincia}</div></div>
-            <div style={{ width: "fit-content" }}><Lbl>Inicio</Lbl><div style={{ fontSize: 14, color: "#111" }}>{d.fechaInicio}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Meses</Lbl><div style={{ fontSize: 15, color: "#111" }}>{d.meses}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Provincia</Lbl><div style={{ fontSize: 15, color: "#111" }}>{d.provincia}</div></div>
+            <div style={{ width: "fit-content" }}><Lbl>Inicio</Lbl><div style={{ fontSize: 15, color: "#111" }}>{d.fechaInicio}</div></div>
           </div>
           <Divider />
           {/* Tabla aportación / reparto */}
@@ -368,11 +368,11 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <Divider />
         <div ref={function(el) { refs.current["gestion"] = el; }}>
           <div style={{ marginBottom: 14 }}>
-            <div style={{ marginBottom: 12 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 14, color: colors.secondary }}>{d.estadoActual.valoracion}</div></div>
+            <div style={{ marginBottom: 12 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 15, color: colors.secondary }}>{d.estadoActual.valoracion}</div></div>
             <div style={{ marginBottom: 12 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
             <div style={{ marginBottom: 12 }}><Lbl>Características</Lbl></div><div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
               {d.estadoActual.caracteristicas.map(function(c) {
-                return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 14, color: colors.secondary }}>{c}</span>;
+                return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 15, color: colors.secondary }}>{c}</span>;
               })}
             </div>
             <div style={{ marginBottom: 12 }}><Lbl>Ubicación</Lbl></div><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div>
@@ -397,7 +397,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                       <div style={{ fontSize: 14, fontWeight: 500, color: "#111" }}>{f.fase}</div>
                       <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>{f.duracion}</div>
                     </div>
-                    <div style={{ fontSize: 14, color: colors.secondary, lineHeight: 1.5 }}>{f.acciones}</div>
+                    <div style={{ fontSize: 15, color: colors.secondary, lineHeight: 1.5 }}>{f.acciones}</div>
                   </div>
                 );
               })}
@@ -431,8 +431,8 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   {tabla.map(function(row) {
                     return (
                       <div key={row[0]} style={{ display: "flex", justifyContent: "space-between", padding: "4px 0", borderBottom: "1px solid #f9fafb" }}>
-                        <span style={{ fontSize: 14, color: colors.secondary }}>{row[0]}</span>
-                        <span style={{ fontSize: 14, color: "#111", fontWeight: ti === 2 ? 600 : 400 }}>{row[1]}</span>
+                        <span style={{ fontSize: 15, color: colors.secondary }}>{row[0]}</span>
+                        <span style={{ fontSize: 15, color: "#111", fontWeight: ti === 2 ? 600 : 400 }}>{row[1]}</span>
                       </div>
                     );
                   })}
@@ -451,7 +451,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 return (
                   <div key={e[0]}>
                     <Lbl>{e[0]}</Lbl>
-                    <div style={{ fontSize: 14, color: colors.secondary }}>{e[1]} EUR</div>
+                    <div style={{ fontSize: 15, color: colors.secondary }}>{e[1]} EUR</div>
                   </div>
                 );
               })}
@@ -473,7 +473,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
         <div ref={function(el) { refs.current["precio"] = el; }}>
           <div style={{ marginBottom: 16 }}>
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
-            <div style={{ marginTop: 6, fontSize: 14, color: colors.secondary, lineHeight: 1.8 }}>
+            <div style={{ marginTop: 6, fontSize: 15, color: colors.secondary, lineHeight: 1.8 }}>
               {[
                 pv.paso0.superficieTerreno ? pv.paso0.superficieTerreno + " m² de terreno" : null,
                 pv.paso0.superficieConstruida ? pv.paso0.superficieConstruida + " m² construidos" : null,
@@ -486,7 +486,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
               <div style={{ marginTop: 4 }}>
                 {pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).map(function(c, i) {
-                  return <div key={i} style={{ fontSize: 14, color: colors.secondary }}>{"Carga de " + c.acreedor + (c.importe ? ": " + c.importe.toLocaleString() + " €" : "")}</div>;
+                  return <div key={i} style={{ fontSize: 15, color: colors.secondary }}>{"Carga de " + c.acreedor + (c.importe ? ": " + c.importe.toLocaleString() + " €" : "")}</div>;
                 })}
               </div>
             )}
@@ -501,7 +501,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                       <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.agencia}</span>
                       <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
                     </div>
-                    <div style={{ fontSize: 14, color: colors.secondary }}>{item.direccion} · {item.contacto} · {item.telefono}</div>
+                    <div style={{ fontSize: 15, color: colors.secondary }}>{item.direccion} · {item.contacto} · {item.telefono}</div>
                   </div>
                 );
               })}
@@ -517,7 +517,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                       <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.titulo}</span>
                       <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
                     </div>
-                    <div style={{ fontSize: 14, color: colors.secondary }}>
+                    <div style={{ fontSize: 15, color: colors.secondary }}>
                       {[item.tipo, item.m2 ? item.m2 + " m2" : "", item.dormBanos ? item.dormBanos + " dorm/baños" : "", item.estado, item.fechaAnuncio].filter(Boolean).join(" · ")}
                     </div>
                     {item.comentarios && <div style={{ fontSize: 14, color: "#9ca3af", marginTop: 3 }}>{item.comentarios}</div>}
@@ -529,7 +529,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           {pv.paso3 && (
             <div style={{ marginBottom: 16 }}>
               <Lbl>Paso 3 · Conclusiones</Lbl>
-              <div style={{ padding: "12px 14px", fontSize: 14, color: colors.secondary, lineHeight: 1.6 }}>
+              <div style={{ padding: "12px 14px", fontSize: 15, color: colors.secondary, lineHeight: 1.6 }}>
                 {pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
               </div>
             </div>
@@ -592,7 +592,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   <Lbl>Interesados</Lbl>
                   {pv.paso4.interesados.map(function(p, i) {
                     return (
-                      <div key={i} style={{ padding: "8px 0", borderBottom: "1px solid #f3f4f6", fontSize: 14, color: colors.secondary }}>
+                      <div key={i} style={{ padding: "8px 0", borderBottom: "1px solid #f3f4f6", fontSize: 15, color: colors.secondary }}>
                         <span style={{ fontWeight: 600 }}>{p.nombre}</span> · {p.telefono} · {p.nacionalidad}
                         {p.comentarios && <div style={{ color: "#9ca3af", marginTop: 2 }}>{p.comentarios}</div>}
                       </div>
@@ -603,7 +603,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               {pv.paso4.comentarios && (
                 <div style={{ marginTop: 8 }}>
                   <Lbl>Conclusión</Lbl>
-                  <div style={{ fontSize: 14, color: colors.secondary }}>{pv.paso4.comentarios}</div>
+                  <div style={{ fontSize: 15, color: colors.secondary }}>{pv.paso4.comentarios}</div>
                 </div>
               )}
             </div>
@@ -704,7 +704,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   if (inline) return body;
   return (
-    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+    <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "stretch", justifyContent: "center" }}>
       <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>
         {body}
       </div>
