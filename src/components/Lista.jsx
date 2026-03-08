@@ -70,7 +70,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
             key={op.id}
             onClick={function() { setSelected(op); }}
             style={{
-              display: "flex", alignItems: "center", padding: "9px 16px",
+              display: "flex", alignItems: "flex-start", padding: "9px 16px",
               cursor: "pointer",
               borderTop: isSelected ? "1px solid #b3d3e6" : "1px solid transparent",
               borderBottom: isSelected ? "1px solid #b3d3e6" : "1px solid #f9fafb",
@@ -88,7 +88,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 </div>
               )}
             </div>
-            <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", flexShrink: 0, paddingTop: 1 }}>
               <span style={{ width: 46, textAlign: "left", fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 14, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
               <span style={{ width: 36, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.meses}</span>
