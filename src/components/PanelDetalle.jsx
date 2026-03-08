@@ -267,6 +267,38 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
   }
 
   // Subvistas a pantalla completa
+  if (subvista === "agencias") {
+    var svAg = (
+      <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
+        <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
+          <button onClick={function() { setSubvista(null); }} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 4, display: "flex", alignItems: "center" }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="#374151" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
+        <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
+          {d.preciodeVenta && d.preciodeVenta.paso1 && d.preciodeVenta.paso1.map(function(ag, i) {
+            return (
+              <div key={i} style={{ marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid #f3f4f6" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{ag.agencia}</div>
+                  <div style={{ fontSize: 14, fontWeight: 700, color: "#111", flexShrink: 0, marginLeft: 12 }}>{ag.precioVenta.toLocaleString("es-ES")} €</div>
+                </div>
+                <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 8 }}>{ag.direccion} · {ag.contacto} · {ag.telefono}</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6, fontStyle: "italic", marginBottom: 6 }}>{ag.cita}</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{ag.feedback}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+    if (inline) return svAg;
+    return (
+      <div onClick={function() { setSubvista(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>{svAg}</div>
+      </div>
+    );
+  }
   if (subvista === "observaciones") {
     var sv = <SubvistaObservaciones observaciones={d.observaciones} onBack={function() { setSubvista(null); }} />;
     if (inline) return sv;
@@ -495,43 +527,27 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </div>
           {pv.paso1 && pv.paso1.length > 0 && (
               <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Comparables vendidos · {pv.paso1.length} agencias</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Paso 1 · Agencias</div>
                 {pv.paso1.map(function(ag, idx) {
                   return (
-                    <div key={idx} style={{ fontSize: 13, color: "#374151", lineHeight: 1.5, marginBottom: 6, paddingLeft: 2 }}>
-                      <span style={{ color: "#9ca3af", marginRight: 6, fontSize: 11, fontWeight: 600 }}>{idx + 1}</span>
-                      <span style={{ fontStyle: "italic" }}>"{ag.cita}"</span>
+                    <div key={idx} style={{ fontSize: 13, color: "#374151", lineHeight: 1.5, marginBottom: 6, paddingLeft: 2, display: "flex", gap: 6 }}>
+                      <span style={{ color: "#9ca3af", fontSize: 11, fontWeight: 600, flexShrink: 0, marginTop: 2 }}>{idx + 1}</span>
+                      <span style={{ fontStyle: "italic" }}>{ag.cita}</span>
                     </div>
                   );
                 })}
                 <button
-                  onClick={function() { setShowAgencias(function(v) { return !v; }); }}
-                  style={{ marginTop: 10, background: "none", border: "none", cursor: "pointer", color: "#7c3aed", fontSize: 12, fontWeight: 600, fontFamily: "inherit", padding: 0 }}
+                  onClick={function() { setSubvista("agencias"); }}
+                  style={{ marginTop: 10, background: "none", border: "none", cursor: "pointer", color: "#2563eb", fontSize: 13, fontFamily: "inherit", padding: 0, textDecoration: "underline" }}
                 >
-                  {showAgencias ? "Ocultar datos de agencias ↑" : "Mostrar datos de agencias (" + pv.paso1.length + ") →"}
+                  Mostrar datos de agencias ({pv.paso1.length})
                 </button>
-                {showAgencias && (
-                  <div style={{ marginTop: 12 }}>
-                    {pv.paso1.map(function(ag, idx) {
-                      return (
-                        <div key={idx} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: "1px solid #f3f4f6" }}>
-                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
-                            <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{ag.agencia}</div>
-                            <div style={{ fontSize: 14, fontWeight: 700, color: "#111", flexShrink: 0, marginLeft: 12 }}>{ag.precioVenta.toLocaleString("es-ES")} €</div>
-                          </div>
-                          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 6 }}>{ag.direccion} · {ag.contacto} · {ag.telefono}</div>
-                          <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{ag.feedback}</div>
-                        </div>
-                      );
-                    })}
-                  </div>
-                )}
               </div>
             )}
 
             {pv.paso2 && pv.paso2.length > 0 && (
               <div style={{ marginTop: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Comparables en venta · {pv.paso2.length} propiedades</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Paso 2 · Anuncios</div>
                 {pv.paso2.map(function(c, idx) {
                   return (
                     <div key={idx} style={{ display: "flex", alignItems: "baseline", gap: 10, padding: "5px 0", borderBottom: "1px solid #f9fafb" }}>
@@ -547,7 +563,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
             {pv.paso3 && (
               <div style={{ marginTop: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Conclusiones</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Paso 3 · Conclusión</div>
                 <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{pv.paso3.conclusiones}</div>
               </div>
             )}
