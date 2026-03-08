@@ -503,7 +503,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           <div style={{ marginBottom: 16 }}>
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
             <div style={{ marginTop: 6, fontSize: 15, color: colors.secondary, lineHeight: 1.8 }}>
-              {pv.paso0 && <Txt text={paso0Texto(pv.paso0)} />            </div>
+              {pv.paso0 && <Txt text={paso0Texto(pv.paso0)} />}            </div>
             
           </div>
           {pv.paso1 && pv.paso1.filter(function(x) { return !!x.agencia; }).length > 0 && (
