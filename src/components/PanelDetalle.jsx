@@ -454,7 +454,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 15, color: colors.secondary }}>{c}</span>;
               })}
             </div>
-            <div style={{ marginBottom: 12 }}><Lbl>Ubicación</Lbl><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div>
+            <div style={{ marginBottom: 12 }}><Lbl>Ubicación</Lbl><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div></div>
           </div>
           <Divider />
           <div style={{ marginBottom: 14 }}>
