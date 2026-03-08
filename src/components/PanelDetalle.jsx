@@ -480,12 +480,14 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   pv.paso0.superficieConstruida ? pv.paso0.superficieConstruida + " m² construidos" : null,
                   pv.paso0.tipoInmueble || null,
                   [pv.paso0.localidad, pv.paso0.provincia].filter(Boolean).join(", ") || null,
-                ].filter(Boolean).join(", ");
-                var cargas = pv.paso0.cargas && pv.paso0.cargas.length
-                  ? pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ")
-                  : null;
-                var texto = partes + (cargas ? ". Cargas: " + cargas : "");
-                return <Campo label="Inmueble" value={texto} />;
+                ].filter(Boolean);
+                var cargasTexto = pv.paso0.cargas && pv.paso0.cargas.length
+                  ? "
+Cargas:
+" + pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.importe; }).join(", ") + "."
+                  : "";
+                var linea = partes.join(", ") + "." + cargasTexto;
+                return <div style={{ fontSize: 14, color: colors.secondary, whiteSpace: "pre-line" }}>{linea}</div>;
               })()}
             </div>
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
