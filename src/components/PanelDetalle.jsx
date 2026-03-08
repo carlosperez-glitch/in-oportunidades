@@ -268,7 +268,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   // Subvistas a pantalla completa
   if (subvista === "agencias") {
-    var pv2 = d.preciodeVenta || {};
+    var pv2 = d.precioVenta || {};
     var svAg = (
       <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
@@ -301,7 +301,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
     );
   }
   if (subvista === "interesados") {
-    var pv3 = d.preciodeVenta || {};
+    var pv3 = d.precioVenta || {};
     var svInt = (
       <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
@@ -602,13 +602,13 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
             {pv.paso4 && (
               <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>Paso 4 · Seguimiento del anuncio</div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 16, marginBottom: 10 }}>Paso 4 · Seguimiento del anuncio</div>
                 <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 10 }}>{pv.paso4.fechaPublicacion} · <a href={pv.paso4.url} target="_blank" rel="noopener" style={{ color: "#2563eb", textDecoration: "underline" }}>{pv.paso4.url}</a></div>
                 {pv.paso4.dias && pv.paso4.dias.length > 0 && (
                   <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 14 }}>
                     <thead>
                       <tr>
-                        {["Día", "Visitas", "Contactos", "Favoritos", "Bajada"].map(function(h2) {
+                        {["", "Visitas", "Contactos", "Favoritos", "Bajada"].map(function(h2) {
                           return <th key={h2} style={{ textAlign: h2 === "Día" ? "left" : "right", color: "#9ca3af", fontWeight: 400, paddingBottom: 5, fontSize: 11 }}>{h2}</th>;
                         })}
                       </tr>
@@ -637,14 +637,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 )}
                 {pv.paso4.interesados && pv.paso4.interesados.length > 0 && (
                   <div>
-                    {pv.paso4.interesados.slice(0, 2).map(function(p, i) {
-                      return (
-                        <div key={i} style={{ marginBottom: 8 }}>
-                          <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{p.nombre} · {p.telefono} · {p.nacionalidad}</div>
-                          <div style={{ fontSize: 12, color: "#9ca3af" }}>{p.notas}</div>
-                        </div>
-                      );
-                    })}
                     <button onClick={function() { setSubvista("interesados"); }} style={{ marginTop: 4, background: "none", border: "none", cursor: "pointer", color: "#2563eb", fontSize: 13, fontFamily: "inherit", padding: 0, textDecoration: "underline" }}>
                       Ver interesados ({pv.paso4.interesados.length})
                     </button>
