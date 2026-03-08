@@ -115,6 +115,31 @@ Hay tres niveles de texto, y la elección correcta es semántica:
 
 ## Patrón: campos del formulario de gestor vs. vista del inversor
 
-Algunos campos que el gestor rellena en el formulario de alta no se muestran como etiquetas individuales en la vista del inversor — se presentan de forma legible y condensada (ej. "113 m² construidos", "Carga de Banco Santander: 45.000 €").
+Algunos campos que el gestor rellena **no se muestran como etiquetas individuales** en la vista del inversor — se presentan condensados en texto legible o se usan solo internamente.
 
-Los nombres de campo y sus etiquetas de formulario están documentados como comentarios en `src/data/mock.js`, junto al objeto de datos al que pertenecen. Ese es el lugar canónico: no duplicar aquí.
+**Regla**: el lugar canónico para los labels de formulario y la nota de visibilidad es `src/data/mock.js`, en el comentario encima de cada objeto `pasoN`. No duplicar aquí.
+
+### Principio general por paso
+
+| Paso | Qué ve el inversor | Qué queda interno |
+|------|--------------------|-------------------|
+| paso0 | Una línea con superficie, tipo, localidad y cargas | referencia catastral, cp, municipio, estado de conservación, habitaciones/baños/extras (aparecen en "Características") |
+| paso1 | Comparables: agencia, precio, dirección, teléfono | campos de cálculo interno del gestor |
+| paso2 | Precio de compra acordado, fecha, condiciones | datos de due diligence internos |
+| paso3 | Conclusión de precio de venta | cálculos intermedios del gestor |
+| paso4 | Precio de venta definitivo y justificación | —  |
+
+### Cuándo un campo es "interno"
+
+Un campo es interno cuando:
+- El usuario (inversor) **nunca necesita verlo** para tomar la decisión de inversión
+- Solo lo usa el sistema para **calcular** otro valor que sí se muestra
+- Es un dato **administrativo** (referencia catastral, CP) que aparecerá en documentos pero no en la ficha
+- Lo usa el gestor para **su propio seguimiento** pero no aporta transparencia al inversor
+
+### Campos que sí se preguntan al LLM en conversaciones internas
+
+Cuando se pida a un LLM que genere o valide datos de una oportunidad, se le pueden pasar todos los campos del mock incluidos los internos. El LLM debe conocerlos para:
+- Validar coherencia (ej. que la superficie construida no supere la del terreno)
+- Generar texto condensado para la vista del inversor
+- Calcular ROI y escenarios
