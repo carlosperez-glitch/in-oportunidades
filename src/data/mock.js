@@ -257,21 +257,28 @@ export const DETALLE = {
       url: "https://idealista.com/inmueble/98765432/",
       fechaPublicacion: "15.02.2025",
       dias: [
-      { visitas: 312, contactos: 4, favoritos: 28, bajada: 0 },
-      { visitas: 278, contactos: 3, favoritos: 31, bajada: 0 },
-      { visitas: 245, contactos: 2, favoritos: 27, bajada: 0 },
-      { visitas: 301, contactos: 5, favoritos: 34, bajada: 0 },
-      { visitas: 189, contactos: 1, favoritos: 22, bajada: 0 },
-      { visitas: 223, contactos: 3, favoritos: 29, bajada: 0 },
-    ],
-            interesados: [
-        { nombre: "John Smith", telefono: "+44 7911 123456", nacionalidad: "Británico", comentarios: "Busca segunda residencia, presupuesto hasta 380k" },
-        { nombre: "Hans Mueller", telefono: "+49 171 9876543", nacionalidad: "Alemán", comentarios: "Muy interesado, visita prevista semana próxima" },
+        { visitas: 312, contactos: 3, favoritos: 28, bajada: 0 },
+        { visitas: 278, contactos: 4, favoritos: 31, bajada: 0 },
+        { visitas: 245, contactos: 2, favoritos: 27, bajada: 0 },
+        { visitas: 301, contactos: 3, favoritos: 34, bajada: 0 },
+        { visitas: 189, contactos: 3, favoritos: 22, bajada: 0 },
+        { visitas: 223, contactos: 3, favoritos: 29, bajada: 0 },
       ],
-      comentarios: "Buen ritmo de visitas para la primera semana. Pendiente de recibir oferta formal de Hans Mueller.",
+      interesados: [
+        { nombre: "John Smith", telefono: "+44 7911 123456", nacionalidad: "Británico", notas: "Busca segunda residencia, presupuesto hasta 380k" },
+        { nombre: "Hans Mueller", telefono: "+49 171 9876543", nacionalidad: "Alemán", notas: "Muy interesado, visita prevista semana próxima" },
+        { nombre: "Ingrid Larsson", telefono: "+46 70 234 5678", nacionalidad: "Sueca", notas: "Quiere chalet con piscina, tiene preaprobación hipotecaria" },
+        { nombre: "Luc Dubois", telefono: "+32 478 12 34 56", nacionalidad: "Belga", notas: "Busca residencia permanente, jubilado. Sin prisa pero serio." },
+        { nombre: "Pieter van Dijk", telefono: "+31 6 12345678", nacionalidad: "Holandés", notas: "Segunda visita confirmada. Muy interesado en el solarium." },
+        { nombre: "Marie Leclerc", telefono: "+33 6 98 76 54 32", nacionalidad: "Francesa", notas: "Compra junto a su pareja. Esperan respuesta de su banco." },
+        { nombre: "Klaus Fischer", telefono: "+43 699 1234567", nacionalidad: "Austriaco", notas: "Presupuesto hasta 370k. Ha visto 4 chalets en la zona." },
+        { nombre: "Emma Johansson", telefono: "+46 73 456 7890", nacionalidad: "Sueca", notas: "Interesada en reforma incluida. Quiere mudarse en verano." },
+        { nombre: "Thomas Becker", telefono: "+49 176 54321098", nacionalidad: "Alemán", notas: "Perfil inversor, busca rentabilidad de alquiler vacacional." },
+        { nombre: "Sofía Andersson", telefono: "+46 72 987 6543", nacionalidad: "Sueca", notas: "Primera visita esta semana. Ha contactado por WhatsApp." },
+      ],
+      conclusion: "Buen ritmo de visitas para la primera semana. Pendiente de recibir oferta formal de Hans Mueller.",
     },
-  },
-};
+  
 
 export const ORDEN_OPTIONS = [
   "Rentabilidad para inversor",
