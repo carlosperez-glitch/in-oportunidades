@@ -482,7 +482,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   [pv.paso0.localidad, pv.paso0.provincia].filter(Boolean).join(", ") || null,
                 ].filter(Boolean);
                 var cargasTexto = pv.paso0.cargas && pv.paso0.cargas.length
-                  ? "\nCargas:\n" + pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.importe; }).join(", ") + "."
+                  ? "\nCargas:\n" + pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ") + "."
                   : "";
                 var linea = partes.join(", ") + "." + cargasTexto;
                 return <div style={{ fontSize: 14, color: colors.secondary, whiteSpace: "pre-line" }}>{linea}</div>;
