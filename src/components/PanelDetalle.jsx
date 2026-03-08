@@ -476,10 +476,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div style={{ marginTop: 6, fontSize: 15, color: colors.secondary, lineHeight: 1.8 }}>
               {pv.paso0 && (() => { const p=[pv.paso0.superficieTerreno?pv.paso0.superficieTerreno+" m² de terreno":null,pv.paso0.superficieConstruida?pv.paso0.superficieConstruida+" m² construidos":null,pv.paso0.tipoInmueble||null,[pv.paso0.localidad,pv.paso0.provincia].filter(Boolean).join(", ")||null].filter(Boolean); const c=pv.paso0.cargas&&pv.paso0.cargas.length?"\nCargas:\n"+pv.paso0.cargas.map(x=>x.acreedor+": "+x.deuda).join(", ")+".":""; return <Txt text={p.join(", ")+"."+c} />; })()
             </div>
-            {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
-              <div style={{ marginTop: 4 }}>}
-              </div>
-            )}
+            
           </div>
           {pv.paso1 && pv.paso1.filter(function(x) { return !!x.agencia; }).length > 0 && (
             <div style={{ marginBottom: 16 }}>
