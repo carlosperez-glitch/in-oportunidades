@@ -189,6 +189,19 @@ function SubvistaResenas({ resenas: initialResenas, onBack }) {
 // - detalle: objeto DETALLE completo (de mock.js)
 // - onClose: fn para cerrar el panel
 // - inline: true → columna derecha desktop | false → bottom sheet mobile
+function paso0Texto(p) {
+  var partes = [
+    p.superficieTerreno ? p.superficieTerreno + " m² de terreno" : null,
+    p.superficieConstruida ? p.superficieConstruida + " m² construidos" : null,
+    p.tipoInmueble || null,
+    [p.localidad, p.provincia].filter(Boolean).join(", ") || null,
+  ].filter(Boolean);
+  var cargas = p.cargas && p.cargas.length
+    ? "\nCargas:\n" + p.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ") + "."
+    : "";
+  return partes.join(", ") + "." + cargas;
+}
+
 export default function PanelDetalle({ detalle: d, onClose, inline }) {
   var [seccion, setSeccion]   = useState("resumen");
   var [ddOpen, setDdOpen]     = useState(false);
@@ -490,8 +503,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           <div style={{ marginBottom: 16 }}>
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
             <div style={{ marginTop: 6, fontSize: 15, color: colors.secondary, lineHeight: 1.8 }}>
-              {pv.paso0 && (() => { const p=[pv.paso0.superficieTerreno?pv.paso0.superficieTerreno+" m² de terreno":null,pv.paso0.superficieConstruida?pv.paso0.superficieConstruida+" m² construidos":null,pv.paso0.tipoInmueble||null,[pv.paso0.localidad,pv.paso0.provincia].filter(Boolean).join(", ")||null].filter(Boolean); const c=pv.paso0.cargas&&pv.paso0.cargas.length?"\nCargas:\n"+pv.paso0.cargas.map(x=>x.acreedor+": "+x.deuda).join(", ")+".":""; return <Txt text={p.join(", ")+"."+c} />; })()
-            </div>
+              {pv.paso0 && <Txt text={paso0Texto(pv.paso0)} />            </div>
             
           </div>
           {pv.paso1 && pv.paso1.filter(function(x) { return !!x.agencia; }).length > 0 && (
