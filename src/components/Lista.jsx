@@ -1,5 +1,6 @@
 import { estadoColor, colors } from "../theme";
 
+// Todas las columnas fijas. Sin 1fr. El espacio sobrante queda vacío a la derecha.
 const COL = "250px 50px 56px 44px 66px 130px";
 
 export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, onAbrirFiltroMobile }) {
@@ -8,8 +9,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
       {/* Toolbar */}
       <div style={{ flexShrink: 0, borderBottom: "1px solid " + colors.border }}>
-
-        {/* Botones */}
         <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", gap: 10 }}>
           <button
             onClick={function() { if (!isDesktop && onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
@@ -28,8 +27,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           </button>
           <button style={{ background: "none", border: "none", cursor: "pointer", color: "#9ca3af", fontSize: 20, lineHeight: 1, padding: 0 }}>+</button>
         </div>
-
-        {/* Cabeceras */}
         <div style={{ display: "grid", gridTemplateColumns: COL, padding: "0 16px 8px", fontSize: 12, color: "#9ca3af" }}>
           <span></span>
           <span style={{ textAlign: "left" }}>Estrat.</span>
@@ -60,7 +57,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 transition: "background 0.1s",
               }}
             >
-              {/* Col 1: título + gestor */}
               <div style={{ width: 250, overflow: "hidden" }}>
                 <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {op.titulo}
@@ -71,20 +67,10 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                   </div>
                 )}
               </div>
-
-              {/* Estrat */}
               <span style={{ fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
-
-              {/* ROI */}
               <span style={{ fontSize: 14, fontWeight: 700, color: "#111", textAlign: "right" }}>{op.roi} %</span>
-
-              {/* Meses */}
               <span style={{ fontSize: 14, color: "#6b7280", textAlign: "right" }}>{op.meses}</span>
-
-              {/* Tipo */}
               <span style={{ fontSize: 14, color: "#6b7280", paddingLeft: 8 }}>{op.tipo}</span>
-
-              {/* Estado */}
               {isDesktop && (
                 <span style={{ fontSize: 14, color: op.porCapitalizar ? "#d97706" : (estadoColor[op.estado] || "#374151"), fontWeight: 500, paddingLeft: 8, whiteSpace: "nowrap" }}>
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
@@ -93,7 +79,6 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
             </div>
           );
         })}
-
         {filtradas.length === 0 && (
           <div style={{ padding: "40px 20px", textAlign: "center", color: "#9ca3af", fontSize: 13 }}>
             No hay oportunidades con los filtros seleccionados
