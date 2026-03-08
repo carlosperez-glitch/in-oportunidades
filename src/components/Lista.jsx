@@ -68,7 +68,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 )}
               </div>
               <span style={{ fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
-              <span style={{ fontSize: 14, fontWeight: 700, color: "#111", textAlign: "right" }}>{op.roi} %</span>
+              <span style={{ fontSize: 15, fontWeight: 400, color: "#111", textAlign: "right" }}>{op.roi} %</span>
               <span style={{ fontSize: 14, color: "#6b7280", textAlign: "right" }}>{op.meses}</span>
               <span style={{ fontSize: 14, color: "#6b7280", paddingLeft: 8 }}>{op.tipo}</span>
               {isDesktop && (
