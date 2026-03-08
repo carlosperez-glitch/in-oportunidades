@@ -451,13 +451,13 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div style={{ marginBottom: 12 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
             <div style={{ marginBottom: 12 }}>
               <Lbl>Características</Lbl>
-              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginTop: 4 }}>
                 {d.estadoActual.caracteristicas.map(function(c) {
                   return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 13, color: "#374151" }}>{c}</span>;
                 })}
               </div>
             </div>
-            <div style={{ marginBottom: 12 }}>
+            <div style={{ marginBottom: 0 }}>
               <Lbl>Ubicación</Lbl>
               <div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af" }}>Mapa</div>
             </div>
