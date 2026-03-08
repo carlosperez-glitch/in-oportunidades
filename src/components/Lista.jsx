@@ -21,17 +21,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
 
 
   // Medir el texto más largo de los títulos visibles
-  const tituloMinWidth = useMemo(() => {
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    ctx.font = "400 15px 'DM Sans', sans-serif";
-    let max = 120;
-    filtradas.forEach(op => {
-      const w = ctx.measureText(op.titulo).width;
-      if (w > max) max = w;
-    });
-    return Math.ceil(max) + 16; // +16 de padding visual
-  }, [filtradas]);
+  const tituloMinWidth = 250;
 
   return (
     <div style={{ flex: 1, minWidth: 0, display: "flex", flexDirection: "column", overflow: "hidden" }}>
@@ -93,7 +83,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 {op.titulo}
               </div>
             </div>
-            <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
+            <div style={{ display: "flex", alignItems: "center", flexShrink: 0, flexWrap: "wrap" }}>
               <span style={{ width: 46, textAlign: "left", fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 14, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
               <span style={{ width: 36, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.meses}</span>
@@ -104,7 +94,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 </span>
               )}
               {isDesktop && (
-                <span style={{ width: 170, paddingLeft: 12, fontSize: 14, color: "#374151", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                <span style={{ paddingLeft: 12, fontSize: 14, color: "#374151", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", flexBasis: "100%", order: 1 }}>
                   {op.gestor}
                 </span>
               )}
