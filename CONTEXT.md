@@ -222,3 +222,50 @@ El panel de detalle tiene una sección "Precio de venta" con 4 pestañas:
 - **Aportación de valor**: la reforma u otras mejoras que aumentan el precio del activo
 - **Capitalizar**: captar el dinero de los inversores antes de la compra
 - **Tanteo y retracto**: derecho de la administración a adquirir preferentemente ciertos activos (relevante en algunas zonas de España)
+
+### Diagnóstico de JSX desbalanceado en PanelDetalle
+
+**Síntoma**: el scrollRef solo ocupa 80px aunque su scrollHeight sea 1800px.
+**Causa**: un `</div>` extra dentro del scrollRef lo cerraba prematuramente, dejando secciones enteras como hermanos del layout en lugar de hijos del scroll.
+**Herramienta de diagnóstico definitiva** — ejecutar en la consola del browser:
+```js
+const allDivs = Array.from(document.querySelectorAll('div'));
+const scrollDiv = allDivs.find(d =>
+  getComputedStyle(d).overflowY === 'auto' &&
+  getComputedStyle(d).flexGrow === '1'
+);
+({ h: scrollDiv.getBoundingClientRect().height, scrollH: scrollDiv.scrollHeight, children: scrollDiv.children.length })
+// Si h << scrollH, el contenido está fuera del scrollDiv
+```
+
+### Contar balance de divs en JSX via GitHub API
+Para encontrar dónde se cierra prematuramente el scrollRef:
+```js
+const iStart = lines.findIndex(l => l.includes('ref={scrollRef}'));
+let depth = 0, firstClose = null;
+for (let i = iStart; i < lines.length; i++) {
+  const opens = (lines[i].match(/<div[\s>]/g)||[]).length - (lines[i].match(/<div[^>]*\/>/g)||[]).length;
+  const closes = (lines[i].match(/<\/div>/g)||[]).length;
+  depth += opens - closes;
+  if (depth === 0 && i > iStart && !firstClose) { firstClose = i+1; break; }
+}
+// firstClose debe coincidir con la línea justo antes del footer
+```
+
+### Patrones de JSX problemáticos en líneas largas
+Líneas como `<div><Lbl>X</Lbl></div><div style=...>` son trampas:
+- El primer `</div>` cierra el wrapper externo antes de tiempo
+- El segundo `<div>` queda suelto y desbalancéa todo lo siguiente
+- **Regla**: si una línea tiene N aperturas de `<div>`, debe tener exactamente N cierres `</div>`
+- Verificar siempre con: `(l.match(/<div[\s>]/g)||[]).length === (l.match(/<\/div>/g)||[]).length`
+
+### git reset --hard no actualiza el archivo en disco si Vite tiene caché
+Secuencia correcta cuando persiste el error tras reset:
+1. `git fetch origin && git reset --hard origin/main`
+2. Ctrl+C en la terminal de Vite
+3. `rm -rf node_modules/.vite && npm run dev`
+Si sigue igual, abrir nueva terminal y repetir desde el paso 1.
+
+### padding-bottom del scrollRef
+El `padding: "0 24px 80px"` del scrollRef añade 80px de espacio vacío al final del contenido.
+Valor correcto: `"0 24px 20px"`
