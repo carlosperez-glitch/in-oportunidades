@@ -1,4 +1,5 @@
-import { useState, useRef, useEffect } from "react";
+var [showAgencias, setShowAgencias] = useState(false);
+  import { useState, useRef, useEffect } from "react";
 import { estadoColor, colors } from "../theme";
 
 // ─── Secciones del desplegable ────────────────────────────────────────────────
@@ -492,50 +493,66 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               {pv.paso0 && <Txt text={paso0Texto(pv.paso0)} />}            </div>
             
           </div>
-          {pv.paso1 && pv.paso1.filter(function(x) { return !!x.agencia; }).length > 0 && (
-            <div style={{ marginBottom: 16 }}>
-              <Lbl>Paso 1 · Comparables vendidos</Lbl>
-              {pv.paso1.filter(function(x) { return !!x.agencia; }).map(function(item, i) {
-                return (
-                  <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.agencia}</span>
-                      <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precioVenta ? item.precioVenta.toLocaleString() + " €" : ""}</span>
+          {pv.paso1 && pv.paso1.length > 0 && (
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Comparables vendidos · {pv.paso1.length} agencias</div>
+                {pv.paso1.map(function(ag, idx) {
+                  return (
+                    <div key={idx} style={{ fontSize: 13, color: "#374151", lineHeight: 1.5, marginBottom: 6, paddingLeft: 2 }}>
+                      <span style={{ color: "#9ca3af", marginRight: 6, fontSize: 11, fontWeight: 600 }}>{idx + 1}</span>
+                      <span style={{ fontStyle: "italic" }}>"{ag.cita}"</span>
                     </div>
-                    <div style={{ fontSize: 15, color: colors.secondary }}>{item.direccion} · {item.contacto} · {item.telefono}</div>
+                  );
+                })}
+                <button
+                  onClick={function() { setShowAgencias(function(v) { return !v; }); }}
+                  style={{ marginTop: 10, background: "none", border: "none", cursor: "pointer", color: "#7c3aed", fontSize: 12, fontWeight: 600, fontFamily: "inherit", padding: 0 }}
+                >
+                  {showAgencias ? "Ocultar datos de agencias ↑" : "Mostrar datos de agencias (" + pv.paso1.length + ") →"}
+                </button>
+                {showAgencias && (
+                  <div style={{ marginTop: 12 }}>
+                    {pv.paso1.map(function(ag, idx) {
+                      return (
+                        <div key={idx} style={{ marginBottom: 14, paddingBottom: 14, borderBottom: "1px solid #f3f4f6" }}>
+                          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+                            <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{ag.agencia}</div>
+                            <div style={{ fontSize: 14, fontWeight: 700, color: "#111", flexShrink: 0, marginLeft: 12 }}>{ag.precioVenta.toLocaleString("es-ES")} €</div>
+                          </div>
+                          <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 6 }}>{ag.direccion} · {ag.contacto} · {ag.telefono}</div>
+                          <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{ag.feedback}</div>
+                        </div>
+                      );
+                    })}
                   </div>
-                );
-              })}
-            </div>
-          )}
-          {pv.paso2 && pv.paso2.filter(function(x) { return !!x.titulo; }).length > 0 && (
-            <div style={{ marginBottom: 16 }}>
-              <Lbl>Paso 2 · Comparables en venta</Lbl>
-              {pv.paso2.filter(function(x) { return !!x.titulo; }).map(function(item, i) {
-                return (
-                  <div key={i} style={{ padding: "10px 12px", background: "#f9fafb", borderRadius: 8, marginBottom: 6 }}>
-                    <div style={{ display: "flex", justifyContent: "space-between", marginBottom: 4 }}>
-                      <span style={{ fontSize: 15, fontWeight: 500, color: "#111" }}>{item.titulo}</span>
-                      <span style={{ fontSize: 15, fontWeight: 500, color: "#374151" }}>{item.precio ? item.precio.toLocaleString() + " €" : ""}</span>
-                    </div>
-                    <div style={{ fontSize: 15, color: colors.secondary }}>
-                      {[item.tipo, item.m2 ? item.m2 + " m2" : "", item.dormBanos ? item.dormBanos + " dorm/baños" : "", item.estado, item.fechaAnuncio].filter(Boolean).join(" · ")}
-                    </div>
-                    {item.comentarios && <div style={{ fontSize: 14, color: "#9ca3af", marginTop: 3 }}>{item.comentarios}</div>}
-                  </div>
-                );
-              })}
-            </div>
-          )}
-          {pv.paso3 && (
-            <div style={{ marginBottom: 16 }}>
-              <Lbl>Paso 3 · Conclusiones</Lbl>
-              <div style={{ padding: "12px 14px", fontSize: 15, color: colors.secondary, lineHeight: 1.6 }}>
-                {pv.paso3.conclusiones || <span style={{ color: "#9ca3af" }}>Sin conclusiones aún</span>}
+                )}
               </div>
-            </div>
-          )}
-          {pv.paso4 && (
+            )}
+
+            {pv.paso2 && pv.paso2.length > 0 && (
+              <div style={{ marginTop: 16 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Comparables en venta · {pv.paso2.length} propiedades</div>
+                {pv.paso2.map(function(c, idx) {
+                  return (
+                    <div key={idx} style={{ display: "flex", alignItems: "baseline", gap: 10, padding: "5px 0", borderBottom: "1px solid #f9fafb" }}>
+                      <span style={{ flex: 1, fontSize: 13, color: "#374151", minWidth: 0, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>{c.titulo}</span>
+                      <span style={{ fontSize: 12, color: "#6b7280", flexShrink: 0 }}>{c.m2} m²</span>
+                      <span style={{ fontSize: 13, fontWeight: 600, color: "#111", flexShrink: 0 }}>{c.precio} €</span>
+                      <span style={{ fontSize: 11, color: "#9ca3af", flexShrink: 0 }}>{c.diasEnVenta}d</span>
+                    </div>
+                  );
+                })}
+              </div>
+            )}
+
+            {pv.paso3 && (
+              <div style={{ marginTop: 16 }}>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Conclusiones</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{pv.paso3.conclusiones}</div>
+              </div>
+            )}
+
+            {pv.paso4 && (
             <div>
               <Lbl>Paso 4 · Seguimiento del anuncio</Lbl>
               <Campo label="" valor={pv.paso4.url} />
