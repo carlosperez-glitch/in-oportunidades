@@ -353,8 +353,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   var pv = d.precioVenta || {};
 
-    ;
-
   var body = (
     <div style={{ fontFamily: "'DM Sans', sans-serif", display: "flex", flexDirection: "column", height: "100%", overflow: "hidden" }}>
 
