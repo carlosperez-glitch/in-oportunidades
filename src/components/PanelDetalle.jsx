@@ -464,7 +464,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
           <div style={{ marginBottom: 14 }}>
-                      <div>
               {/* Cabecera única */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "0 10px 4px" }}>
                 <Lbl>Fase</Lbl>
@@ -484,7 +483,6 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             </div>
           </div>
           <div style={{ marginBottom: 14 }}>
-            <Divider />
             <div style={{ marginBottom: 12 }}><Lbl>Situación actual</Lbl><Txt text={d.situacionActual} /></div>
             <div><Lbl>Próximos pasos</Lbl><Txt text={d.proximosPasos} /></div>
           </div>
