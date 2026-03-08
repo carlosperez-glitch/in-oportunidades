@@ -62,7 +62,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                   {op.titulo}
                 </div>
                 {isDesktop && (
-                  <div style={{ fontSize: 12, color: "#9ca3af", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginTop: 1 }}>
+                  <div style={{ fontSize: 13, color: "#9ca3af", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginTop: 1 }}>
                     {op.gestor}
                   </div>
                 )}
