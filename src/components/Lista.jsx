@@ -3,7 +3,7 @@ import { estadoColor, colors } from "../theme";
 // Todas las columnas fijas. Sin 1fr. El espacio sobrante queda vacío a la derecha.
 const COL = "250px 50px 56px 44px 66px 130px";
 
-export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, onAbrirFiltroMobile }) {
+export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, onToggleSidebar }) {
   return (
     <div style={{ flex: 1, overflowY: "auto", minWidth: 0, display: "flex", flexDirection: "column" }}>
 
@@ -11,7 +11,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
       <div style={{ flexShrink: 0, borderBottom: "1px solid " + colors.border }}>
         <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", gap: 10 }}>
           <button
-            onClick={function() { if (onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
+            onClick={function() { if (onToggleSidebar) onToggleSidebar(); }}
             style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", marginRight: 10 }}
           >
             <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
