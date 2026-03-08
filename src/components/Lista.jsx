@@ -11,7 +11,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
       <div style={{ flexShrink: 0, borderBottom: "1px solid " + colors.border }}>
         <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", gap: 10 }}>
           <button
-            onClick={function() { if (!isDesktop && onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
+            onClick={function() { if (onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
             style={{ position: "relative", background: "none", border: "none", cursor: "pointer", padding: 0, display: "flex", alignItems: "center", marginRight: 10 }}
           >
             <svg width="18" height="14" viewBox="0 0 18 14" fill="none">
