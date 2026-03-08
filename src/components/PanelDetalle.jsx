@@ -268,6 +268,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   // Subvistas a pantalla completa
   if (subvista === "agencias") {
+    var pv2 = d.preciodeVenta || {};
     var svAg = (
       <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
         <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
@@ -276,7 +277,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </button>
         </div>
         <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
-          {d.preciodeVenta && d.preciodeVenta.paso1 && d.preciodeVenta.paso1.map(function(ag, i) {
+          {(pv2.paso1 || []).map(function(ag, i) {
             return (
               <div key={i} style={{ marginBottom: 20, paddingBottom: 20, borderBottom: "1px solid #f3f4f6" }}>
                 <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
@@ -296,6 +297,38 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
     return (
       <div onClick={function() { setSubvista(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
         <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>{svAg}</div>
+      </div>
+    );
+  }
+  if (subvista === "interesados") {
+    var pv3 = d.preciodeVenta || {};
+    var svInt = (
+      <div style={{ display: "flex", flexDirection: "column", height: "100%", fontFamily: "'DM Sans', sans-serif" }}>
+        <div style={{ display: "flex", alignItems: "center", padding: "12px 20px", borderBottom: "1px solid #f3f4f6", flexShrink: 0 }}>
+          <button onClick={function() { setSubvista(null); }} style={{ background: "none", border: "none", cursor: "pointer", padding: 0, marginRight: 4, display: "flex", alignItems: "center" }}>
+            <svg width="20" height="20" viewBox="0 0 20 20" fill="none"><path d="M13 4L7 10L13 16" stroke="#374151" strokeWidth="1.8" strokeLinecap="round" strokeLinejoin="round"/></svg>
+          </button>
+        </div>
+        <div style={{ flex: 1, overflowY: "auto", padding: "16px 20px" }}>
+          {(pv3.paso4 && pv3.paso4.interesados || []).map(function(p, i) {
+            return (
+              <div key={i} style={{ marginBottom: 16, paddingBottom: 16, borderBottom: "1px solid #f3f4f6" }}>
+                <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 4 }}>
+                  <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{p.nombre}</div>
+                  <div style={{ fontSize: 12, color: "#6b7280" }}>{p.nacionalidad}</div>
+                </div>
+                <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 4 }}>{p.telefono}</div>
+                <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.5 }}>{p.notas}</div>
+              </div>
+            );
+          })}
+        </div>
+      </div>
+    );
+    if (inline) return svInt;
+    return (
+      <div onClick={function() { setSubvista(null); }} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "flex-end", justifyContent: "center" }}>
+        <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>{svInt}</div>
       </div>
     );
   }
@@ -431,8 +464,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
           <div style={{ marginBottom: 14 }}>
-            <Divider />
-          <div>
+                      <div>
               {/* Cabecera única */}
               <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "0 10px 4px" }}>
                 <Lbl>Fase</Lbl>
@@ -569,83 +601,65 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             )}
 
             {pv.paso4 && (
-            <div>
-              <Lbl>Paso 4 · Seguimiento del anuncio</Lbl>
-              <Campo label="" valor={pv.paso4.url} />
-              <Campo label="" valor={pv.paso4.fechaPublicacion} />              {pv.paso4.dias && pv.paso4.dias.length > 0 && (
-                <div style={{ marginBottom: 10, marginTop: 8 }}>
-                  <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 13 }}>
+              <div>
+                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 10 }}>Paso 4 · Seguimiento del anuncio</div>
+                <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 10 }}>{pv.paso4.fechaPublicacion} · <a href={pv.paso4.url} target="_blank" rel="noopener" style={{ color: "#2563eb", textDecoration: "underline" }}>{pv.paso4.url}</a></div>
+                {pv.paso4.dias && pv.paso4.dias.length > 0 && (
+                  <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 14 }}>
                     <thead>
-                      <tr style={{ borderBottom: "2px solid #e5e7eb" }}>
-                        {["", ...pv.paso4.dias.map(function(d, i) { return String(i+1); }), "Total"].map(function(h) {
-                          return <th key={h} style={{ padding: "4px 8px", textAlign: h === "" ? "left" : "right", color: "#9ca3af", fontWeight: 600 }}>{h}</th>;
+                      <tr>
+                        {["Día", "Visitas", "Contactos", "Favoritos", "Bajada"].map(function(h2) {
+                          return <th key={h2} style={{ textAlign: h2 === "Día" ? "left" : "right", color: "#9ca3af", fontWeight: 400, paddingBottom: 5, fontSize: 11 }}>{h2}</th>;
                         })}
                       </tr>
                     </thead>
                     <tbody>
-                      <tr style={{ borderBottom: "1px solid #f3f4f6" }}>
-                        <td style={{ padding: "4px 8px", color: "#9ca3af", fontSize: 11, fontWeight: 600, textTransform: "uppercase", letterSpacing: "0.04em" }}>Día</td>
-                        <td style={{ padding: "4px 8px" }}></td>
-                        {pv.paso4.dias.map(function(dia, i) {
-                          return <td key={i} style={{ padding: "4px 8px", textAlign: "right", color: "#9ca3af", fontSize: 11, fontWeight: 600 }}>{i+1}</td>;
-                        })}
-                      </tr>
-                      {[
-                        { label: "Contactos totales", key: "contactosTotales" },
-                        { label: "Llamadas",          key: "llamadas" },
-                        { label: "WhatsApp/Telegram", key: "whatsapp" },
-                        { label: "Email portales",    key: "email" },
-                        { label: "Precio (€)",        key: "precio" },
-                      ].map(function(row) {
-                        var total = row.key !== "precio"
-                          ? pv.paso4.dias.reduce(function(s, d) { return s + (d[row.key] || 0); }, 0)
-                          : "";
+                      {pv.paso4.dias.map(function(dia, i) {
                         return (
-                          <tr key={row.label} style={{ borderBottom: "1px solid #f3f4f6" }}>
-                            <td style={{ padding: "4px 8px", color: "#374151", fontWeight: 500 }}>{row.label}</td>
-                            <td style={{ padding: "4px 8px", textAlign: "right", fontWeight: 600, color: "#111" }}>{total}</td>
-                            {pv.paso4.dias.map(function(dia, i) {
-                              return <td key={i} style={{ padding: "4px 8px", textAlign: "right", color: "#6b7280" }}>{dia[row.key]}</td>;
-                            })}
+                          <tr key={i} style={{ borderTop: "1px solid #f3f4f6" }}>
+                            <td style={{ padding: "4px 0", fontSize: 12, color: "#374151" }}>{i + 1}</td>
+                            <td style={{ textAlign: "right", fontSize: 12, color: "#6b7280" }}>{dia.visitas}</td>
+                            <td style={{ textAlign: "right", fontSize: 12, color: "#6b7280" }}>{dia.contactos}</td>
+                            <td style={{ textAlign: "right", fontSize: 12, color: "#6b7280" }}>{dia.favoritos}</td>
+                            <td style={{ textAlign: "right", fontSize: 12, color: dia.bajada < 0 ? "#e53e3e" : "#6b7280" }}>{dia.bajada === 0 ? "—" : dia.bajada + "%"}</td>
                           </tr>
                         );
                       })}
-                      <tr style={{ borderBottom: "1px solid #f3f4f6" }}>
-                        <td style={{ padding: "4px 8px", color: "#374151", fontWeight: 500 }}>Fecha</td>
+                      <tr style={{ borderTop: "2px solid #e5e7eb" }}>
+                        <td style={{ padding: "5px 0", fontSize: 12, fontWeight: 600, color: "#111" }}>Total</td>
+                        <td style={{ textAlign: "right", fontSize: 12, fontWeight: 600, color: "#111" }}>{pv.paso4.dias.reduce(function(s,d2){return s+d2.visitas;},0)}</td>
+                        <td style={{ textAlign: "right", fontSize: 12, fontWeight: 600, color: "#111" }}>{pv.paso4.dias.reduce(function(s,d2){return s+d2.contactos;},0)}</td>
+                        <td style={{ textAlign: "right", fontSize: 12, fontWeight: 600, color: "#111" }}>{pv.paso4.dias.reduce(function(s,d2){return s+d2.favoritos;},0)}</td>
                         <td></td>
-                        {pv.paso4.dias.map(function(dia, i) {
-                          return <td key={i} style={{ padding: "4px 8px", textAlign: "right", color: "#9ca3af", fontSize: 12 }}>{dia.fecha}</td>;
-                        })}
                       </tr>
                     </tbody>
                   </table>
-                </div>
-              )}
-              {pv.paso4.interesados && pv.paso4.interesados.length > 0 && (
-                <div style={{ marginBottom: 12 }}>
-                  <Lbl>Interesados</Lbl>
-                  {pv.paso4.interesados.map(function(p, i) {
-                    return (
-                      <div key={i} style={{ padding: "8px 0", borderBottom: "1px solid #f3f4f6", fontSize: 15, color: colors.secondary }}>
-                        <span style={{ fontWeight: 600 }}>{p.nombre}</span> · {p.telefono} · {p.nacionalidad}
-                        {p.comentarios && <div style={{ color: "#9ca3af", marginTop: 2 }}>{p.comentarios}</div>}
-                      </div>
-                    );
-                  })}
-                </div>
-              )}
-              {pv.paso4.comentarios && (
-                <div style={{ marginTop: 8 }}>
-                  <Lbl>Conclusión</Lbl>
-                  <div style={{ fontSize: 15, color: colors.secondary }}>{pv.paso4.comentarios}</div>
-                </div>
-              )}
-            </div>
-          )}
-        </div>
+                )}
+                {pv.paso4.interesados && pv.paso4.interesados.length > 0 && (
+                  <div>
+                    {pv.paso4.interesados.slice(0, 2).map(function(p, i) {
+                      return (
+                        <div key={i} style={{ marginBottom: 8 }}>
+                          <div style={{ fontSize: 13, fontWeight: 600, color: "#111" }}>{p.nombre} · {p.telefono} · {p.nacionalidad}</div>
+                          <div style={{ fontSize: 12, color: "#9ca3af" }}>{p.notas}</div>
+                        </div>
+                      );
+                    })}
+                    <button onClick={function() { setSubvista("interesados"); }} style={{ marginTop: 4, background: "none", border: "none", cursor: "pointer", color: "#2563eb", fontSize: 13, fontFamily: "inherit", padding: 0, textDecoration: "underline" }}>
+                      Ver interesados ({pv.paso4.interesados.length})
+                    </button>
+                  </div>
+                )}
+                {pv.paso4.conclusion && (
+                  <div style={{ marginTop: 12 }}>
+                    <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Conclusión</div>
+                    <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{pv.paso4.conclusion}</div>
+                  </div>
+                )}
+              </div>
+            )}
 
-        {/* ── SOLVENCIA Y TRANSPARENCIA ────────────────────────────────────── */}
-        <Divider />
+            <Divider />
         <div ref={function(el) { refs.current["solvencia"] = el; }}>
           <Campo label="Quién compra"                     valor={d.solvencia.comprador} />
           <Campo label="Comunicación y periodicidad"      valor={d.solvencia.comunicacion} />
