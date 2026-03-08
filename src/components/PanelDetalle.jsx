@@ -287,21 +287,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
   var pv = d.precioVenta || {};
 
-    var paso0Texto = (function() {
-    if (!d.preciodeVenta || !d.preciodeVenta.paso0) return null;
-    var pv = d.preciodeVenta;
-    var p0 = pv.paso0;
-    var partes = [
-      p0.superficieTerreno ? p0.superficieTerreno + " m² de terreno" : null,
-      p0.superficieConstruida ? p0.superficieConstruida + " m² construidos" : null,
-      p0.tipoInmueble || null,
-      [p0.localidad, p0.provincia].filter(Boolean).join(", ") || null,
-    ].filter(Boolean);
-    var cargas = p0.cargas && p0.cargas.length
-      ? "\nCargas:\n" + p0.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ") + "."
-      : "";
-    return partes.join(", ") + "." + cargas;
-  })();
+    ;
 
   var body = (
     <div style={{ fontFamily: "'DM Sans', sans-serif", display: "flex", flexDirection: "column", height: "100%", overflow: "hidden" }}>
