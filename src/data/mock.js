@@ -160,7 +160,8 @@ export const DETALLE = {
       jardin: true,
       estadoConservacion: "Reforma iniciada",
       cargas: [
-        { acreedor: "Banco Santander", importe: "45.000 EUR", tipo: "Hipoteca" },
+        { acreedor: "Banco Santander", deuda: "45.000 EUR" },
+        { acreedor: "BBVA", deuda: "15.000 EUR" },
       ],
     },
     // FORMULARIO GESTOR — campos del paso 1 (comparables vendidos)
