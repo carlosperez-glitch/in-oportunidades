@@ -196,6 +196,7 @@ export const DETALLE = {
       telefono: "952 80 14 23",
       direccion: "Av. Litoral, 12 · Estepona",
       precioVenta: 360000,
+      cita: "En Litoral los extranjeros pagan entre 350 y 370. La piscina privada hace la diferencia frente a los adosados del núcleo.",
       feedback: "Propiedad con buena acogida en el mercado. El perfil de comprador habitual en la zona es extranjero (norte de Europa) y valora especialmente la piscina privada y el jardín. Recomiendan fijar precio entre 350.000 y 370.000 EUR."
     },
     {
@@ -204,7 +205,8 @@ export const DETALLE = {
       telefono: "951 33 72 10",
       direccion: "C/ Real, 8 · Estepona Centro",
       precioVenta: 355000,
-      feedback: "El chalet encaja bien con la demanda de familias que buscan primera o segunda residencia. La reforma mediterránea contemporánea será un diferencial claro. Aconsejan destacar la parcela de 554 m² en la comercialización."
+      cita: "Las familias alemanas y escandinavas buscan exactamente esto: chalet, jardín, piscina, a menos de 10 minutos del mar. Con reforma nueva entra al mercado sin negociación.",
+      feedback: "El chalet encaja bien con la demanda de familias que buscan primera o segunda residencia. La reforma mediterránea contemporánea añade valor diferencial frente a la oferta sin reformar."
     },
     {
       agencia: "Inmobiliaria Costa & Mar",
@@ -212,18 +214,38 @@ export const DETALLE = {
       telefono: "952 79 55 41",
       direccion: "Urb. Valle Romano, local 3 · Estepona",
       precioVenta: 345000,
-      feedback: "Buena ubicación dentro del valle. Señalan que el trastero y el garaje son puntos de venta fuertes. Estiman un plazo de venta de 6-8 semanas una vez terminada la reforma si se fija precio competitivo."
+      cita: "Vendimos un chalet en la misma urb. con reforma similar por 348.000 en octubre. El jardín orientado al sur lo vendió en 3 semanas.",
+      feedback: "La ubicación en Valle Romano es muy demandada. Los compradores actuales prefieren propiedades reformadas llave en mano. Estiman demanda sostenida en el rango 340.000–360.000 EUR."
+    },
+    {
+      agencia: "Berkshire Hathaway HomeServices",
+      contacto: "María José Ruiz",
+      telefono: "952 88 40 12",
+      direccion: "Av. España, 45 · Estepona",
+      precioVenta: 370000,
+      cita: "El solarium es un argumento de venta que los belgas y holandeses no negocian. Quien lo tiene puede pedir 15.000–20.000 más que el comparable sin él.",
+      feedback: "Perfil de comprador mayoritario: familias europeas de entre 45 y 60 años con presupuesto consolidado. El solarium y la zona de barbacoa añaden valor real en la negociación final."
+    },
+    {
+      agencia: "Gilmar Estepona",
+      contacto: "Carlos Lara",
+      telefono: "952 76 18 90",
+      direccion: "C/ Blas Infante, 3 · Estepona",
+      precioVenta: 358000,
+      cita: "La paralela a Litoral no tiene vistas al mar pero es más silenciosa. Hemos vendido en ambas y la diferencia de precio es 10.000–15.000 a favor de Litoral.",
+      feedback: "La zona es madura y tiene poca oferta nueva. Los compradores que visitan suelen decidir en 2–3 visitas. Recomienda publicar en noviembre–diciembre para captar el mercado de invierno europeo."
+    },
+    {
+      agencia: "Lucas Fox Marbella–Estepona",
+      contacto: "James O'Connor",
+      telefono: "952 90 33 77",
+      direccion: "Puerto Banús, Edf. Coral · Marbella",
+      precioVenta: 365000,
+      cita: "El comprador que ha buscado en Marbella y no ha encontrado en presupuesto baja a Estepona. Ese perfil tiene liquidez y decide rápido cuando ve calidad de reforma.",
+      feedback: "El mercado de Estepona absorbe demanda sobrante de Marbella. La reforma de calidad media-alta es un filtro de comprador: quien la ve sabe el precio sin regatear demasiado."
     },
   ],
-        // FORMULARIO GESTOR — campos del paso 2 (comparables en venta)
-    // El inversor ve: título, precio, m², días en venta.
-    // El gestor rellena estos campos por cada comparable:
-    //   titulo       → "Título del anuncio"
-    //   precio       → "Precio de venta (€)"
-    //   m2           → "Superficie construida (m²)"
-    //   diasEnVenta  → "Días en venta"
-    //   url          → "URL del anuncio"
-    paso2: [
+  paso2: [
       { titulo: "Chalet Valle Romano", precio: "395.000", m2: 118, diasEnVenta: 45, url: "https://idealista.com/a1" },
       { titulo: "Villa Estepona Golf", precio: "445.000", m2: 140, diasEnVenta: 90, url: "https://idealista.com/a2" },
       { titulo: "Casa adosada centro", precio: "320.000", m2: 105, diasEnVenta: 30, url: "https://fotocasa.es/a3" },
