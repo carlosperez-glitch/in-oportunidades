@@ -748,6 +748,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           onNext={function() { setLb(function(l) { return Object.assign({}, l, { index: Math.min(l.items.length - 1, l.index + 1) }); }); }} />
       )}
     </div>
+  </div>
   );
 
   if (inline) return body;
