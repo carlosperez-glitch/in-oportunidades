@@ -1,5 +1,4 @@
-var [showAgencias, setShowAgencias] = useState(false);
-  import { useState, useRef, useEffect } from "react";
+import { useState, useRef, useEffect } from "react";
 import { estadoColor, colors } from "../theme";
 
 // ─── Secciones del desplegable ────────────────────────────────────────────────
@@ -206,7 +205,8 @@ function paso0Texto(p) {
 export default function PanelDetalle({ detalle: d, onClose, inline }) {
   var [seccion, setSeccion]   = useState("resumen");
   var [ddOpen, setDdOpen]     = useState(false);
-  var [subvista, setSubvista] = useState(null); // null | "observaciones" | "resenas"
+  var [subvista, setSubvista] = useState(null);
+  var [showAgencias, setShowAgencias] = useState(false); // null | "observaciones" | "resenas"
   var [lb, setLb]             = useState({ open: false, index: 0, items: [] });
   var scrollRef = useRef(null);
   var refs      = useRef({});
