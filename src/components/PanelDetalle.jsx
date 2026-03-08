@@ -456,7 +456,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 );
               })}
             </div>
-            <Txt text={d.escenarios.explicacion} />
+            <Lbl>Explicación</Lbl><Txt text={d.escenarios.explicacion} />
           </div>
           <div style={{ marginBottom: 12 }}>
             <Lbl>Fiscalidad de la compraventa</Lbl>
@@ -485,7 +485,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                   ? "\nCargas:\n" + pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ") + "."
                   : "";
                 var linea = partes.join(", ") + "." + cargasTexto;
-                return <div style={{ fontSize: 14, color: colors.secondary, whiteSpace: "pre-line" }}>{linea}</div>;
+                return <Txt text={linea} />;
               })()}
             </div>
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
