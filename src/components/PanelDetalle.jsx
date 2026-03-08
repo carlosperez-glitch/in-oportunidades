@@ -489,10 +489,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
               })()}
             </div>
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
-              <div style={{ marginTop: 4 }}>
-                {pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).map(function(c, i) {
-                  return <div key={i} style={{ fontSize: 15, color: colors.secondary }}>{"Carga de " + c.acreedor + (c.importe ? ": " + c.importe.toLocaleString() + " €" : "")}</div>;
-                })}
+              <div style={{ marginTop: 4 }}>}
               </div>
             )}
           </div>
