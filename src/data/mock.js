@@ -1,4 +1,4 @@
-// ─── Datos mock ───────────────────────────────────────────────────────────────
+// --- Datos mock ---------------------------------------------------------------
 // En producción esto vendrá de una API según op.id
 
 export const OPORTUNIDADES = [
@@ -127,38 +127,38 @@ export const DETALLE = {
     // FORMULARIO GESTOR — campos del paso 0 (ficha del inmueble)
     // El inversor ve solo un resumen legible (superficies, tipo, cargas).
     // El gestor rellena todos estos campos en el formulario de alta:
-    //   referencia        → "Referencia catastral"
-    //   localidad         → "Localidad"
-    //   municipio         → "Municipio"
-    //   cp                → "CP"
-    //   provincia         → "Provincia"
-    //   tipoInmueble      → "Tipo de inmueble"
-    //   superficieTerreno → "Sup. terreno (m²)"
-    //   superficieConstruida → "Sup. construida (m²)"
-    //   habitaciones      → "Habitaciones"
-    //   banos             → "Baños"
-    //   garajes           → "Garajes"
-    //   trasteros         → "Trasteros"
-    //   piscina           → "Piscina" (bool)
-    //   jardin            → "Jardín" (bool)
-    //   estadoConservacion→ "Estado de conservación"
-    //   cargas[]          → "Cargas" (acreedor, importe, tipo)
+    //   referencia        -> "Referencia catastral"
+    //   localidad         -> "Localidad"
+    //   municipio         -> "Municipio"
+    //   cp                -> "CP"
+    //   provincia         -> "Provincia"
+    //   tipoInmueble      -> "Tipo de inmueble"
+    //   superficieTerreno -> "Sup. terreno (m²)"
+    //   superficieConstruida -> "Sup. construida (m²)"
+    //   habitaciones      -> "Habitaciones"
+    //   banos             -> "Baños"
+    //   garajes           -> "Garajes"
+    //   trasteros         -> "Trasteros"
+    //   piscina           -> "Piscina" (bool)
+    //   jardin            -> "Jardín" (bool)
+    //   estadoConservacion-> "Estado de conservación"
+    //   cargas[]          -> "Cargas" (acreedor, importe, tipo)
     // FORMULARIO GESTOR — campos del paso 0 (nota simple / ficha del inmueble)
     // Qué ve el inversor: los campos se condensan en una sola línea legible en PanelDetalle:
     //   "554 m² de terreno, 113 m² construidos, Chalet independiente, Estepona, Málaga. Cargas: ..."
     // Campos que NO se muestran individualmente con etiqueta en la vista del inversor:
-    //   referencia     → label formulario: "Referencia catastral"      — uso interno / documentos
-    //   municipio      → label formulario: "Municipio"                 — se muestra fusionado con localidad
-    //   cp             → label formulario: "Código postal"             — uso interno
-    //   habitaciones   → label formulario: "Habitaciones"              — no mostrado en paso0 (sí en características)
-    //   banos          → label formulario: "Baños"                     — no mostrado en paso0 (sí en características)
-    //   garajes        → label formulario: "Garajes"                   — no mostrado en paso0 (sí en características)
-    //   trasteros      → label formulario: "Trasteros"                 — no mostrado en paso0 (sí en características)
-    //   piscina        → label formulario: "Piscina (sí/no)"           — no mostrado en paso0 (sí en características)
-    //   jardin         → label formulario: "Jardín (sí/no)"            — no mostrado en paso0 (sí en características)
-    //   estadoConservacion → label formulario: "Estado de conservación" — uso interno / para el gestor
-    //   cargas[].acreedor  → label formulario: "Acreedor"
-    //   cargas[].deuda     → label formulario: "Importe de la carga"
+    //   referencia     -> label formulario: "Referencia catastral"      — uso interno / documentos
+    //   municipio      -> label formulario: "Municipio"                 — se muestra fusionado con localidad
+    //   cp             -> label formulario: "Código postal"             — uso interno
+    //   habitaciones   -> label formulario: "Habitaciones"              — no mostrado en paso0 (sí en características)
+    //   banos          -> label formulario: "Baños"                     — no mostrado en paso0 (sí en características)
+    //   garajes        -> label formulario: "Garajes"                   — no mostrado en paso0 (sí en características)
+    //   trasteros      -> label formulario: "Trasteros"                 — no mostrado en paso0 (sí en características)
+    //   piscina        -> label formulario: "Piscina (sí/no)"           — no mostrado en paso0 (sí en características)
+    //   jardin         -> label formulario: "Jardín (sí/no)"            — no mostrado en paso0 (sí en características)
+    //   estadoConservacion -> label formulario: "Estado de conservación" — uso interno / para el gestor
+    //   cargas[].acreedor  -> label formulario: "Acreedor"
+    //   cargas[].deuda     -> label formulario: "Importe de la carga"
     paso0: {
       referencia: "3742801WH3474S0001KP",
       localidad: "Estepona",
@@ -183,12 +183,12 @@ export const DETALLE = {
     // FORMULARIO GESTOR — campos del paso 1 (comparables vendidos)
     // El inversor ve: agencia, precio, dirección y teléfono de contacto.
     // El gestor rellena estos campos por cada comparable:
-    //   agencia      → "Agencia"
-    //   contacto     → "Nombre del contacto"
-    //   telefono     → "Teléfono"
-    //   direccion    → "Dirección del inmueble"
-    //   precioVenta  → "Precio de venta (€)"
-    //   feedback     → "Feedback de la agencia"
+    //   agencia      -> "Agencia"
+    //   contacto     -> "Nombre del contacto"
+    //   telefono     -> "Teléfono"
+    //   direccion    -> "Dirección del inmueble"
+    //   precioVenta  -> "Precio de venta (€)"
+    //   feedback     -> "Feedback de la agencia"
     paso1: [
     {
       agencia: "RE/MAX Estepona",
