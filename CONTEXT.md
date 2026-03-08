@@ -185,3 +185,40 @@ Cuando se pida a un LLM que genere o valide datos de una oportunidad, se le pued
   ```
 - El error "Expected X but found Y" de esbuild apunta a la línea donde se detecta el desbalance,
   no necesariamente donde está el problema real — buscar hacia arriba
+
+## Contexto de negocio
+
+### El programa IN
+"IN" es un programa de formación en inversión inmobiliaria. Sus alumnos aprenden a detectar activos con potencial, reformarlos y venderlos o alquilarlos con rentabilidad. Esta app es la plataforma interna del programa donde los alumnos colaboran entre sí.
+
+### Tipos de operación
+- **CA-Venta (V)**: Compra + Aportación de valor + Venta a tercero
+- **CA-Alquiler (A)**: Compra + Aportación de valor + Alquiler
+- **IB**: Inversión con aportación del gestor y del inversor bajo un contrato de cuentas en participación (CCP)
+- **IB+S**: IB con garantía o seguro adicional
+- **JV**: Joint Venture — sociedad temporal entre gestor e inversor
+- **JV W**: Joint Venture con participación de Willington (entidad del programa)
+
+### Flujo de una operación
+1. El gestor detecta un activo y publica la oportunidad (estado: **Tanteo**)
+2. Se capta capital entre los inversores (estado: **Capitalizando**)
+3. Se firma el CCP (Contrato de Cuentas en Participación) y se compra el activo (estado: **En marcha**)
+4. Se ejecuta la reforma y/o comercialización
+5. Se vende o alquila el activo y se reparte el beneficio (estado: **Finalizada**)
+
+### El CCP (Contrato de Cuentas en Participación)
+Instrumento jurídico que regula la relación gestor-inversor. El gestor aporta trabajo y una parte del capital; el inversor aporta capital. El reparto de beneficios se pacta en el CCP. Es redactado por un asesor fiscal externo y firmado antes de la compra del activo.
+
+### Precio de venta — los 4 pasos
+El panel de detalle tiene una sección "Precio de venta" con 4 pestañas:
+1. **Agencias**: valoraciones de agencias inmobiliarias de la zona
+2. **Anuncios**: comparables en portales (Idealista, etc.)
+3. **Conclusión**: precio objetivo razonado
+4. **Seguimiento**: evolución del anuncio (visitas, contactos, bajadas de precio) e interesados
+
+### Vocabulario clave
+- **Gestor**: el alumno que lidera la operación
+- **Inversor**: alumno que pone capital en operaciones de otros
+- **Aportación de valor**: la reforma u otras mejoras que aumentan el precio del activo
+- **Capitalizar**: captar el dinero de los inversores antes de la compra
+- **Tanteo y retracto**: derecho de la administración a adquirir preferentemente ciertos activos (relevante en algunas zonas de España)
