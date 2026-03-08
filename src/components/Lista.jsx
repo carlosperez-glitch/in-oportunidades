@@ -57,7 +57,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           <span style={{ width: 36, textAlign: "right" }}>Mes.</span>
           <span style={{ width: 50, paddingLeft: 8, textAlign: "left" }}>Tipo</span>
           {isDesktop && <span style={{ width: 148, paddingLeft: 12, textAlign: "left" }}>Estado</span>}
-          {isDesktop && <span style={{ width: 170, paddingLeft: 12 }}>Gestor</span>}
+          
         </div>
       </div>
 
@@ -78,12 +78,17 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               transition: "background 0.1s",
             }}
           >
-            <div style={{ flex: 1, minWidth: tituloMinWidth }}>
-              <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap" }}>
+            <div style={{ flex: 1, minWidth: tituloMinWidth, overflow: "hidden" }}>
+              <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                 {op.titulo}
               </div>
+              {isDesktop && (
+                <div style={{ fontSize: 12, color: "#9ca3af", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginTop: 1 }}>
+                  {op.gestor}
+                </div>
+              )}
             </div>
-            <div style={{ display: "flex", alignItems: "center", flexShrink: 0, flexWrap: "wrap" }}>
+            <div style={{ display: "flex", alignItems: "center", flexShrink: 0 }}>
               <span style={{ width: 46, textAlign: "left", fontSize: 14, color: "#6b7280" }}>{op.estrategia}</span>
               <span style={{ width: 50, textAlign: "right", fontSize: 14, fontWeight: 400, color: "#111" }}>{op.roi} %</span>
               <span style={{ width: 36, textAlign: "right", fontSize: 14, color: "#6b7280" }}>{op.meses}</span>
@@ -93,11 +98,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K€" : op.estado}
                 </span>
               )}
-              {isDesktop && (
-                <span style={{ paddingLeft: 12, fontSize: 14, color: "#374151", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", flexBasis: "100%", order: 1 }}>
-                  {op.gestor}
-                </span>
-              )}
+
             </div>
           </div>
         );
