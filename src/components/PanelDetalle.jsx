@@ -474,18 +474,17 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           <div style={{ marginBottom: 16 }}>
             <Lbl>Paso 0 · Ficha del inmueble</Lbl>
             <div style={{ marginTop: 6, fontSize: 15, color: colors.secondary, lineHeight: 1.8 }}>
-              {(function() {
-                var partes = [
+              {(() => {
+                const partes = [
                   pv.paso0.superficieTerreno ? pv.paso0.superficieTerreno + " m² de terreno" : null,
                   pv.paso0.superficieConstruida ? pv.paso0.superficieConstruida + " m² construidos" : null,
                   pv.paso0.tipoInmueble || null,
                   [pv.paso0.localidad, pv.paso0.provincia].filter(Boolean).join(", ") || null,
                 ].filter(Boolean);
-                var cargasTexto = pv.paso0.cargas && pv.paso0.cargas.length
-                  ? "\nCargas:\n" + pv.paso0.cargas.map(function(c) { return c.acreedor + ": " + c.deuda; }).join(", ") + "."
+                const cargas = pv.paso0.cargas && pv.paso0.cargas.length
+                  ? "\nCargas:\n" + pv.paso0.cargas.map(c => c.acreedor + ": " + c.deuda).join(", ") + "."
                   : "";
-                var linea = partes.join(", ") + "." + cargasTexto;
-                return <Txt text={linea} />;
+                return <Txt text={partes.join(", ") + "." + cargas} />;
               })()}
             </div>
             {pv.paso0 && pv.paso0.cargas && pv.paso0.cargas.filter(function(c) { return !!c.acreedor; }).length > 0 && (
