@@ -1,17 +1,9 @@
 import { useMemo } from "react";
 import { estadoColor, colors } from "../theme";
 
-// Props:
-// - filtradas: op[] — lista ya filtrada y ordenada
-// - selected: op | null
-// - setSelected: fn
-// - isDesktop: bool
-// - totalFiltros: number — para el badge del embudo
-// - showSidebar: bool — estado del sidebar (solo mobile)
-// - onAbrirFiltroMobile: fn — solo en mobile
-
 // Columnas: 250px título | 46 Estrat | 50 ROI | 36 Mes | 60 Tipo | 120 Estado | 1fr Gestor
 const COL = "250px 46px 50px 36px 60px 120px 1fr";
+const PT = 2; // paddingTop en celdas para alinear con primera línea del título
 
 export default function Lista({ filtradas, selected, setSelected, isDesktop, totalFiltros, onAbrirFiltroMobile }) {
   return (
@@ -20,7 +12,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
       {/* Toolbar */}
       <div style={{ flexShrink: 0, borderBottom: "1px solid " + colors.border }}>
 
-        {/* Fila botones */}
+        {/* Botones */}
         <div style={{ display: "flex", alignItems: "center", padding: "10px 16px", gap: 10 }}>
           <button
             onClick={function() { if (!isDesktop && onAbrirFiltroMobile) onAbrirFiltroMobile(); }}
@@ -46,13 +38,13 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
           <span style={{ textAlign: "left" }}>Estrat.</span>
           <span style={{ textAlign: "right" }}>ROI</span>
           <span style={{ textAlign: "right" }}>Mes.</span>
-          <span style={{ textAlign: "left", paddingLeft: 8 }}>Tipo</span>
+          <span style={{ paddingLeft: 8 }}>Tipo</span>
           {isDesktop && <span style={{ paddingLeft: 8 }}>Estado</span>}
           {isDesktop && <span style={{ paddingLeft: 12 }}>Gestor</span>}
         </div>
       </div>
 
-      {/* Filas — scrollable */}
+      {/* Filas */}
       <div style={{ flex: 1, overflowY: "auto" }}>
         {filtradas.map(function(op) {
           var isSel = selected && selected.id === op.id;
@@ -63,7 +55,7 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
               style={{
                 display: "grid",
                 gridTemplateColumns: COL,
-                alignItems: "center",
+                alignItems: "flex-start",
                 padding: "9px 16px",
                 cursor: "pointer",
                 borderTop: isSel ? "1px solid #b3d3e6" : "1px solid transparent",
@@ -72,39 +64,38 @@ export default function Lista({ filtradas, selected, setSelected, isDesktop, tot
                 transition: "background 0.1s",
               }}
             >
-              {/* Título + gestor (debajo) */}
+              {/* Título — solo el nombre */}
               <div style={{ overflow: "hidden" }}>
                 <div style={{ fontSize: 15, fontWeight: 400, color: "#111", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
                   {op.titulo}
                 </div>
-                {isDesktop && (
-                  <div style={{ fontSize: 12, color: "#9ca3af", whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis", marginTop: 1 }}>
-                    {op.gestor}
-                  </div>
-                )}
               </div>
 
               {/* Estrat */}
-              <span style={{ fontSize: 14, color: "#6b7280", textAlign: "left" }}>{op.estrategia}</span>
+              <span style={{ fontSize: 14, color: "#6b7280", textAlign: "left", paddingTop: PT }}>{op.estrategia}</span>
 
               {/* ROI */}
-              <span style={{ fontSize: 14, fontWeight: 700, color: "#111", textAlign: "right" }}>{op.roi} %</span>
+              <span style={{ fontSize: 14, fontWeight: 700, color: "#111", textAlign: "right", paddingTop: PT }}>{op.roi} %</span>
 
               {/* Meses */}
-              <span style={{ fontSize: 14, color: "#6b7280", textAlign: "right" }}>{op.meses}</span>
+              <span style={{ fontSize: 14, color: "#6b7280", textAlign: "right", paddingTop: PT }}>{op.meses}</span>
 
               {/* Tipo */}
-              <span style={{ fontSize: 14, color: "#6b7280", paddingLeft: 8 }}>{op.tipo}</span>
+              <span style={{ fontSize: 14, color: "#6b7280", paddingLeft: 8, paddingTop: PT }}>{op.tipo}</span>
 
               {/* Estado */}
               {isDesktop && (
-                <span style={{ fontSize: 14, color: op.porCapitalizar ? "#d97706" : (estadoColor[op.estado] || "#374151"), fontWeight: 500, paddingLeft: 8, whiteSpace: "nowrap" }}>
+                <span style={{ fontSize: 14, color: op.porCapitalizar ? "#d97706" : (estadoColor[op.estado] || "#374151"), fontWeight: 500, paddingLeft: 8, paddingTop: PT, whiteSpace: "nowrap" }}>
                   {op.porCapitalizar ? "Por capitalizar " + op.porCapitalizar + " K\u20ac" : op.estado}
                 </span>
               )}
 
-              {/* Gestor — columna vacía en desktop (ya está bajo título) */}
-              {isDesktop && <span></span>}
+              {/* Gestor — columna propia */}
+              {isDesktop && (
+                <span style={{ fontSize: 12, color: "#9ca3af", paddingLeft: 12, paddingTop: PT, whiteSpace: "nowrap", overflow: "hidden", textOverflow: "ellipsis" }}>
+                  {op.gestor}
+                </span>
+              )}
             </div>
           );
         })}
