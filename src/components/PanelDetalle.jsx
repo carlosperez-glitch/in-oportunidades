@@ -449,12 +449,18 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           <div style={{ marginBottom: 14 }}>
             <div style={{ marginBottom: 12 }}><Lbl>Valoración en venta</Lbl><div style={{ fontSize: 15, color: colors.secondary }}>{d.estadoActual.valoracion}</div></div>
             <div style={{ marginBottom: 12 }}><Lbl>Descripción</Lbl><Txt text={d.estadoActual.descripcion} /></div>
-            <div style={{ marginBottom: 12 }}><Lbl>Características</Lbl><div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
-              {d.estadoActual.caracteristicas.map(function(c) {
-                return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 15, color: colors.secondary }}>{c}</span>;
-              })}
+            <div style={{ marginBottom: 12 }}>
+              <Lbl>Características</Lbl>
+              <div style={{ display: "flex", flexWrap: "wrap", gap: 6, marginBottom: 8 }}>
+                {d.estadoActual.caracteristicas.map(function(c) {
+                  return <span key={c} style={{ background: "#f3f4f6", borderRadius: 20, padding: "3px 10px", fontSize: 13, color: "#374151" }}>{c}</span>;
+                })}
+              </div>
             </div>
-            <div style={{ marginBottom: 12 }}><Lbl>Ubicación</Lbl><div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af", marginBottom: 0 }}>Mapa</div></div>
+            <div style={{ marginBottom: 12 }}>
+              <Lbl>Ubicación</Lbl>
+              <div style={{ width: "100%", height: 80, background: "#e5e7eb", borderRadius: 8, display: "flex", alignItems: "center", justifyContent: "center", fontSize: 14, color: "#9ca3af" }}>Mapa</div>
+            </div>
           </div>
           <Divider />
           <div style={{ marginBottom: 14 }}>
@@ -462,23 +468,21 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
             <div><Lbl>Solución</Lbl><Txt text={d.solucion} /></div>
           </div>
           <div style={{ marginBottom: 14 }}>
-              {/* Cabecera única */}
-              <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "0 10px 4px" }}>
-                <Lbl>Fase</Lbl>
-                <Lbl>Acciones</Lbl>
-              </div>
-              {d.fases.map(function(f, i) {
-                return (
-                  <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
-                    <div>
-                      <div style={{ fontSize: 14, fontWeight: 500, color: "#111" }}>{f.fase}</div>
-                      <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>{f.duracion}</div>
-                    </div>
-                    <div style={{ fontSize: 15, color: colors.secondary, lineHeight: 1.5 }}>{f.acciones}</div>
-                  </div>
-                );
-              })}
+            <div style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "0 10px 4px" }}>
+              <Lbl>Fase</Lbl>
+              <Lbl>Acciones</Lbl>
             </div>
+            {d.fases.map(function(f, i) {
+              return (
+                <div key={i} style={{ display: "grid", gridTemplateColumns: "1fr 2fr", gap: 8, padding: "8px 10px", background: i % 2 === 0 ? "#f9fafb" : "#fff", borderRadius: 6, marginBottom: 2 }}>
+                  <div>
+                    <div style={{ fontSize: 14, fontWeight: 500, color: "#111" }}>{f.fase}</div>
+                    <div style={{ fontSize: 12, color: "#9ca3af", marginTop: 2 }}>{f.duracion}</div>
+                  </div>
+                  <div style={{ fontSize: 15, color: colors.secondary, lineHeight: 1.5 }}>{f.acciones}</div>
+                </div>
+              );
+            })}
           </div>
           <div style={{ marginBottom: 14 }}>
             <div style={{ marginBottom: 12 }}><Lbl>Situación actual</Lbl><Txt text={d.situacionActual} /></div>
