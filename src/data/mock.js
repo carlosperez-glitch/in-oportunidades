@@ -278,7 +278,7 @@ export const DETALLE = {
       ],
       conclusion: "Buen ritmo de visitas para la primera semana. Pendiente de recibir oferta formal de Hans Mueller.",
     },
-  
+};
 
 export const ORDEN_OPTIONS = [
   "Rentabilidad para inversor",
