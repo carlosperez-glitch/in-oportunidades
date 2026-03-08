@@ -559,7 +559,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
           </div>
           {pv.paso1 && pv.paso1.length > 0 && (
               <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Paso 1 · Agencias</div>
+                <Lbl>Paso 1 · Agencias</Lbl>
                 {pv.paso1.map(function(ag, idx) {
                   return (
                     <div key={idx} style={{ fontSize: 13, color: "#374151", lineHeight: 1.5, marginBottom: 6, paddingLeft: 2, display: "flex", gap: 6 }}>
@@ -579,7 +579,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
             {pv.paso2 && pv.paso2.length > 0 && (
               <div style={{ marginTop: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 8 }}>Paso 2 · Anuncios</div>
+                <Lbl>Paso 2 · Anuncios</Lbl>
                 {pv.paso2.map(function(c, idx) {
                   return (
                     <div key={idx} style={{ display: "flex", alignItems: "baseline", gap: 10, padding: "5px 0", borderBottom: "1px solid #f9fafb" }}>
@@ -595,14 +595,14 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
 
             {pv.paso3 && (
               <div style={{ marginTop: 16 }}>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 6 }}>Paso 3 · Conclusión</div>
+                <Lbl>Paso 3 · Conclusión</Lbl>
                 <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{pv.paso3.conclusiones}</div>
               </div>
             )}
 
             {pv.paso4 && (
               <div>
-                <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginTop: 16, marginBottom: 10 }}>Paso 4 · Seguimiento del anuncio</div>
+                <Lbl style={{ marginTop: 16 }}>Paso 4 · Seguimiento del anuncio</Lbl>
                 <div style={{ fontSize: 12, color: "#6b7280", marginBottom: 10 }}>{pv.paso4.fechaPublicacion} · <a href={pv.paso4.url} target="_blank" rel="noopener" style={{ color: "#2563eb", textDecoration: "underline" }}>{pv.paso4.url}</a></div>
                 {pv.paso4.dias && pv.paso4.dias.length > 0 && (
                   <table style={{ width: "100%", borderCollapse: "collapse", marginBottom: 14 }}>
@@ -644,7 +644,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
                 )}
                 {pv.paso4.conclusion && (
                   <div style={{ marginTop: 12 }}>
-                    <div style={{ fontSize: 11, fontWeight: 700, color: "#9ca3af", textTransform: "uppercase", letterSpacing: "0.06em", marginBottom: 4 }}>Conclusión</div>
+                    <Lbl>Conclusión</Lbl>
                     <div style={{ fontSize: 13, color: "#374151", lineHeight: 1.6 }}>{pv.paso4.conclusion}</div>
                   </div>
                 )}
