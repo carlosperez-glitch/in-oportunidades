@@ -705,7 +705,7 @@ export default function PanelDetalle({ detalle: d, onClose, inline }) {
   if (inline) return body;
   return (
     <div onClick={onClose} style={{ position: "fixed", inset: 0, background: "rgba(0,0,0,0.18)", zIndex: 200, display: "flex", alignItems: "stretch", justifyContent: "center" }}>
-      <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", borderRadius: "16px 16px 0 0", width: "100%", maxWidth: 480, maxHeight: "92vh", display: "flex", flexDirection: "column" }}>
+      <div onClick={function(e) { e.stopPropagation(); }} style={{ background: "#fff", width: "100%", height: "100%", display: "flex", flexDirection: "column" }}>
         {body}
       </div>
     </div>
